@@ -3,10 +3,17 @@
     <div class="col mt-4">
       <h2 class="text-center mb-4" style="font-weight:bold; color:#A07B35; font-family: serif;">登録情報編集</h2>
 
-      <div style="padding: 15px; margin-bottom: 10px; border: 5px double #A07B35; background-color: #fffaf0;">
-        <%= form_with model: @user, url: public_users_edit_path, method: :patch,  local: true do |f| %>
+      <div style="padding: 15px; margin-bottom: 10px; border: 5px double #660000; background-color: #AFEEEE;">
+        <%= form_with model: @user, url: public_user_path, method: :patch,  local: true do |f| %>
         <table>
           <tbody>
+            <tr>
+              <td class="p-1">画像</td>
+              <td></td>
+              <td class="pl-1">
+                <%= f.file_field :image, accept: "image/*" %>
+              </td>
+            </tr>
             <tr>
               <td class="p-1"><%= f.label :email, "メールアドレス" %></td>
               <td></td>
@@ -92,6 +99,13 @@
                 <%= f.text_field :size, autofocus: true, autocomplete: "size" %>
               </td>
             </tr>
+            
+            <tr>
+                <td colspan="2"></td>
+                <td class="pt-2"><%= f.submit "編集内容を保存", class: "btn btn-success" , style: "width: 200px;" %></td>
+                <td></td>
+                <td class="pt-2"><%#= link_to " 退会する", unsubscribe_path, class: "btn btn-danger"%></td>
+              </tr>
             </tbody>
           </table>
            <% end %>

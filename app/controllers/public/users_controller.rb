@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
   def update
     user = User.find(current_user.id)
     if user.update(user_params)
-      redirect_to public_users_mypage_path, notice: "変更内容を保存しました。"
+      redirect_to public_user_path, notice: "変更内容を保存しました。"
     else
       render :edit
     end
@@ -27,7 +27,7 @@ class Public::UsersController < ApplicationController
   
   private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :nickname, :address, :favorite_brand, :email, :favorite_shoes_name, :size, :age)
+    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :nickname, :address, :favorite_brand, :email, :favorite_shoes_name, :size, :age, :image)
   end
   
   

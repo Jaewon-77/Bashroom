@@ -12,17 +12,17 @@
 
   <body>
     <!--일단 대충 만들었음 어디로 들어가야지 여기로 나오는지 아직 모르겠다-->
-    <header class="fixed-top">
+    <header>
     <br>
     <br>
-    <div class="btn-wrapper col-10 mx-auto">
-        <div class="row">
+    <div class="btn-wrapper col-2">
+        <div class="col-5">
           <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary sign_in", method: :post %>
         </div>
-        <div class="row">
+        <div class="col-5">
           <%= link_to "Log in",new_user_session_path, class: "btn btn-info sign_in" %>
         </div>
-        <div class="row">
+        <div class="col-5">
           <%= link_to "Sign Up",new_user_registration_path, class: "btn btn-success sign_up" %>
         </div>
       </div>
