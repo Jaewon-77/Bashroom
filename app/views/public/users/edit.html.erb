@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-4">
+      <h2 class="text-center mb-4" style="font-weight:bold; color:#A07B35; font-family: serif;">登録情報編集</h2>
+
+      <div style="padding: 15px; margin-bottom: 10px; border: 5px double #A07B35; background-color: #fffaf0;">
+        <%= form_with model: @user, url: public_users_edit_path, method: :patch,  local: true do |f| %>
+        <table>
+          <tbody>
+            <tr>
+              <td class="p-1"><%= f.label :email, "メールアドレス" %></td>
+              <td></td>
+              <td class="pl-1"><%= f.email_field :email, autocomplete: "email" %></td>
+            </tr>
+
+            <tr>
+              <td class="p-1">氏名</td>
+              <td class="p-1">
+                <%= f.label :last_name, "(姓)" %>
+              </td>
+              <td class="pl-1">
+                <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+              </td>
+              <td class="pl-4">
+                <%= f.label :first_name, "(名)" %>
+              </td>
+              <td class="pl-1">
+                <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="p-1">フリガナ</td>
+              <td class="p-1">
+                <%= f.label :last_name_kana, "(セイ)" %>
+              </td>
+              <td class="pl-1">
+                <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
+              </td>
+              <td class="pl-4">
+                <%= f.label :first_name_kana, "(メイ)" %>
+              </td>
+              <td class="pl-1">
+                <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="p-1"><%= f.label :nickname, "ニックネーム" %></td>
+              <td></td>
+              <td class="pl-1">
+                <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="p-1"><%= f.label :age, "年齢" %></td>
+              <td></td>
+              <td class="pl-1">
+                <%= f.text_field :age, autofocus: true, autocomplete: "age" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="p-1"><%= f.label :address, "住所" %></td>
+              <td></td>
+              <td  class="pl-1" colspan="3">
+                <%= f.text_field :address, size:"50", autofocus: true, autocomplete: "address" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="p-1"><%= f.label :favorite_brand, "好きなバスケットボールシューズブランド名" %></td>
+              <td></td>
+              <td class="pl-1" colspan="3">
+                <%= f.text_field :favorite_brand, autofocus: true, autocomplete: "favorite_brand" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="p-1"><%= f.label :favorite_shoes_name, "好きなバスケットボールシューズ名" %></td>
+              <td></td>
+              <td  class="pl-1" colspan="3">
+                <%= f.text_field :favorite_shoes_name, autofocus: true, autocomplete: "favorite_shoes_name" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="p-1"><%= f.label :size, "バスケットボールシューズサイズ" %></td>
+              <td></td>
+              <td  class="pl-1" colspan="3">
+                <%= f.text_field :size, autofocus: true, autocomplete: "size" %>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+           <% end %>
+      </div>
+    </div>
+  </div>
+</div>
