@@ -19,9 +19,16 @@ devise_for :users,skip: [:passwords], controllers: {
   
   namespace :public do
     resources :shoes_reviews, only: [:index, :edit, :new, :update, :destroy, :show]
-    resources :users, only: [:edit, :update, :show]
+    # resources :users, only: [:edit, :update, :show]
     get 'homes/top'
     get 'homes/about'
+    
+    get "users/mypage", to: "users#show"
+    get "users/information/edit", to: "users#edit"
+    patch "users/information", to: "users#update"
+    get 'users/unsubscribe', to: "users#unsubscribe"
+    patch 'users/withdraw', to: "users#withdraw"
+
   end
   
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
