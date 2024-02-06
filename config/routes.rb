@@ -18,7 +18,7 @@ devise_for :users,skip: [:passwords], controllers: {
   end
   
   namespace :public do
-    resources :shoes_reviews, only: [:index, :edit, :new, :update, :destroy, :show]
+    resources :shoes_reviews
     # resources :users, only: [:edit, :update, :show]
     get 'homes/top'
     get 'homes/about'

@@ -9,22 +9,39 @@
       <table class="table">
         <thead>
           <th colspan="1"></th>
+          <th>User Nickname</th>
+          <th>User Profile Photo</th>
+           <th>Basketball Shoes Photo</th>
           <th>Title</th>
-          <th>Opinion</th>
         </thead>
         <tbody>
      <% @shoes_reviews.each do |shoes_review| %>
        <tr>
-         <td><%= shoes_review.user  %>
-           <%= image_tag shoes_review.user.get_profile_image(100,100), class: "rounded-circle" %> > </td>
-         <td><%= link_to shoes_review_path(shoes_review.id) do %> <%= shoes_review.title  %> <% end %></td>
-         <td><%#= book.body %></td>
-         <td id="favorite_buttons_<%#= book.id %>"><%#= render "favorites/favorite", book: book %>
+         <td><%= shoes_review.user.nickname %></td>
+         <td> <% if @user.image.attached? %>
+        <%= image_tag @user.image, class: "rounded-circle", size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %>
+      <% end %></td>
+         
+         
+         
+          <td> <% if shoes_review.image.attached? %>
+        <%= image_tag shoes_review.image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+      <% end %>
+          </td>
+           
+         
+         <td><%= link_to public_shoes_review_path(shoes_review.id) do %> <%= shoes_review.title  %> <% end %></td>
+
+         <td>
 　　     </td>
          <td>
-           <p>コメント件数：<%#= book.book_comments.count %></p>
+           <p></p>
          </td>
-         <td><td>閲覧数: <%#= book.view_counts.count %></td></td>
+         <td><td></td></td>
 
        </tr>
      <% end %>

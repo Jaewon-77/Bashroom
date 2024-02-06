@@ -1,31 +1,26 @@
 <div class="container">
   <div class="row mt-3 mb-3 offset-1 text-center">
-    <h2>プロフィール</h2>
-  </div>
-
-  <div class="row mt-3">
-    <div class="col-3">
-      <h3>プロフィール情報</h3>
+    <div class="col-12">
+      <h2>ユーザープロフィール</h2>
     </div>
-    <div class="col">
+    <div class="col-12">
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image, class: "rounded-circle", size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %>
+      <% end %>
+    </div>
+    <div class="col-12">
+      <h5>プロフィール写真</h5>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-2">
       <%= link_to "編集", public_users_information_edit_path, class:"btn btn-primary" %>
     </div>
-
-    <div class="col-10">
+    <div class="col-12">
       <div style="padding: 15px; margin-bottom: 10px; border: 5px double #660000; background-color: #AFEEEE;">
       <table class="table table-bordered">
-
-        <tr>
-          <th class="table-active w-25">ユーザープロフィール画像</th>
-            <td>
-              <% if @user.image.attached? %>
-                <%= image_tag @user.image, class: "rounded-circle", size: "200x200" %>
-              <% else %>
-                <%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %>
-              <% end %>
-            </td>
-        </tr>
-
         <tr>
           <th class="table-active w-25">メールアドレス</th>
           <td><%= @user.email %></td>
