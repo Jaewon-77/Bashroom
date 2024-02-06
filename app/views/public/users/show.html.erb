@@ -8,13 +8,13 @@
       <h3>プロフィール情報</h3>
     </div>
     <div class="col">
-      <%= link_to "編集", edit_public_user_path, class:"btn btn-primary" %>
+      <%= link_to "編集", public_users_information_edit_path, class:"btn btn-primary" %>
     </div>
-    
+
     <div class="col-10">
       <div style="padding: 15px; margin-bottom: 10px; border: 5px double #660000; background-color: #AFEEEE;">
       <table class="table table-bordered">
-        
+
         <tr>
           <th class="table-active w-25">ユーザープロフィール画像</th>
             <td>
@@ -25,7 +25,7 @@
               <% end %>
             </td>
         </tr>
-        
+
         <tr>
           <th class="table-active w-25">メールアドレス</th>
           <td><%= @user.email %></td>

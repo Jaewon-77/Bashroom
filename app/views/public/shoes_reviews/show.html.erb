@@ -1,2 +1,22 @@
-<h1>Public::ShoesReviews#show</h1>
-<p>Find me in app/views/public/shoes_reviews/show.html.erb</p>
+<div class="container">
+  <div class="row my-3">
+    <div class="col-md-2 mx-auto my-3">
+    </div>
+
+    <div class="col-md-10">
+      <div class="row" style="margin-top: 50px;">
+        <div style="float: left; margin: 15px 50px;">
+          <%= image_tag @shoes_review.get_image(300,300),fallback: "no_image.jpg" %>
+        </div>
+
+
+
+        <div style="width:400px; height:300px; float:left;">
+          <h2><%= @shoes_review.title %></h2>
+          <p><%= @shoes_review.review %></p>
+          </div>
+      </div>
+    </div>
+
+  </div>
+</div>
