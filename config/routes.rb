@@ -28,6 +28,8 @@ devise_for :users,skip: [:passwords], controllers: {
     patch "users/information", to: "users#update"
     get 'users/unsubscribe', to: "users#unsubscribe"
     patch 'users/withdraw', to: "users#withdraw"
+    
+    get "search" => "searches#search"
 
   end
   
