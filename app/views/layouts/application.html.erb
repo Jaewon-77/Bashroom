@@ -16,14 +16,7 @@
     <br>
     <br>
     <div class="btn-wrapper col-2">
-        <div class="col-5">
-          <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary sign_in", method: :post %>
-        </div>
-        <div class="col-5">
-          <%= link_to "Log in",new_user_session_path, class: "btn btn-info sign_in" %>
-        </div>
-        <div class="col-5">
-          <%= link_to "Sign Up",new_user_registration_path, class: "btn btn-success sign_up" %>
+      <%= render 'layouts/header' %>
         </div>
       </div>
       </header>

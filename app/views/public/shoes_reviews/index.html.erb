@@ -5,7 +5,17 @@
       <%#= render 'users/userinfo', user: @user %>
     </div>
     <div class="col-md-8 offset-md-1">
+      <br>
+      <br>
+      <br>
+      <!--検索機能-->
+      <%= render 'public/searches/search' %>
       <h2>Shoes Review</h2>
+       <div class="col-11 px-sm-0 text-right mt-3">
+        <%= link_to new_public_shoes_review_path do %>
+        <button type="button" class="btn btn-light rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+        <% end %>
+      </div>
       <table class="table">
         <thead>
           <th colspan="1"></th>
