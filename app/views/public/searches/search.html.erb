@@ -1,0 +1,66 @@
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "User" %>
+  <h2>Users search for "<%= @word %>"</h2>
+    <thead>
+      <tr>
+        <th colspan="1"></th>
+        <th>User Nickname</th>
+        <th>User Profile Photo</th>
+        <th>Basketball Shoes Photo</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.nickname %></td>
+          <td> <% if user.image.attached? %>
+        <%= image_tag user.image, class: "rounded-circle", size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %>
+      <% end %></td>
+          <% user.shoes_reviews.each do |shoes_review| %>
+            <% if shoes_review.image.attached? %>
+              <td><%= image_tag shoes_review.image, size: "200x200" %></td>
+            <% else %>
+              <td><%= image_tag 'no_image', size: "200x200" %></td>
+            <% end %>
+            <td><%= link_to public_shoes_review_path(shoes_review.id) do %> <%= shoes_review.title  %> <% end %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがShoesReviewの時) -->
+    <thead>
+      <tr>
+        <th colspan="1"></th>
+        <th>User Nickname</th>
+        <th>User Profile Photo</th>
+        <th>Basketball Shoes Photo</th>
+        <th>Title</th>
+
+      </tr>
+    <tbody>
+    <h2>ShoesReview search for "<%= @word %>"</h2>
+    <% @shoes_reviews.each do |shoes_review| %>
+      <tr>
+          <td><%= shoes_review.user.nickname %></td>
+          <td> <% if shoes_review.user.image.attached? %>
+        <%= image_tag shoes_review.user.image, class: "rounded-circle", size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %>
+      <% end %></td>
+          <td> <% if shoes_review.image.attached? %>
+        <%= image_tag shoes_review.image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+      <% end %>
+          </td>
+          <td><%= link_to public_shoes_review_path(shoes_review.id) do %> <%= shoes_review.title  %> <% end %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>
