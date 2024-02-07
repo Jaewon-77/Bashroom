@@ -11,7 +11,7 @@ class ShoesReview < ApplicationRecord
     total = self.traction + self.cushion + self.fit + self.support + self.weight
     return total
   end
-end
+
 
 # 検索方法分岐
   def self.looks(search, word)
@@ -27,3 +27,4 @@ end
       @shoes_review = ShoesReview.all
     end
   end
+end

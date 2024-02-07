@@ -28,9 +28,11 @@ devise_for :users,skip: [:passwords], controllers: {
     patch "users/information", to: "users#update"
     get 'users/unsubscribe', to: "users#unsubscribe"
     patch 'users/withdraw', to: "users#withdraw"
+    
+    get "search" => "searches#search"
 
   end
-  get "search" => "searches#search"
+  
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   devise_scope :user do #user가 맞는지 모르겠음 그리고 밑에 포스트에 users도 맞는지 모르겠음 to에 퍼블릭은 맞음
     post "users/guest_sign_in", to: "public/sessions#guest_sign_in"
