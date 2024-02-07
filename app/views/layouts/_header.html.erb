@@ -53,22 +53,23 @@
         <!--ログインしてないー-->
         <% else %>
           <li class="nav-item mr-3">
-            <%= link_to public_about_path do %>
+            <%= link_to public_homes_about_path do %>
               <i class="fa-solid text-dark fa-house">About</i>
             <% end %>
           </li>
         <li class="nav-item mx-3">
-          <%= link_to public_items_path do %>
-            <i class="fa-solid text-dark fa-cake-candles">商品一覧</i>
-          <% end %>
+          <%#= link_to public_shoes_reviews_path do %>
+            <!--<i class="fa-solid text-dark fa-cake-candles">レビュー一覧</i>-->
+          <%# end %>
+          <!--ログインなしでレビュー一覧へいけない事にするか消すか-->
         </li>
         <li class="nav-item mx-3">
-          <%= link_to new_customer_registration_path, data: {"turbolinks" => false} do %>
+          <%= link_to new_user_registration_path, data: {"turbolinks" => false} do %>
             <i class="fa-solid text-dark fa-user">新規登録</i>
           <% end %>
         </li>
         <li class="nav-item ml-3">
-          <%= link_to  new_customer_session_path do%>
+          <%= link_to  new_user_session_path do%>
             <i class="fa-solid text-dark fa-user">ログイン</i>
           <% end %>
         </li>
