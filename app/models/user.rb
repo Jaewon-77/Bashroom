@@ -39,5 +39,24 @@ GUEST_USER_EMAIL = "guest@example.com"
       @user = User.all
     end
   end
+  
+  def user_status
+    if is_active?
+      "有効"
+    else
+      "退会"
+    end
+  end
+  
+  # def full_name
+  #   last_name + " " + first_name
+  # end
+
+  # def full_name_kana
+  #   last_name_kana + " " + first_name_kana
+  # end
+  
+
+
 
 end
