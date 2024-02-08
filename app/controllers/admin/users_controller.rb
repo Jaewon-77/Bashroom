@@ -1,4 +1,7 @@
 class Admin::UsersController < ApplicationController
+  before_action :set_user, only: [:favorites]
+
+
   def index
     @users = User.all
   end
@@ -20,6 +23,8 @@ class Admin::UsersController < ApplicationController
       flash[:notice] = "会員情報を更新に失敗しました。"
       render 'edit'
     end
+    
+
 
   end
 
@@ -29,6 +34,11 @@ private
     params.require(:user).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :age,
     :address, :favorite_brand, :email, :is_active, :favorite_shoes_name, :nickname, :size)
 
+  end
+
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 
