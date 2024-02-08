@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="row my-3 offset-1 text-center">
-      <h2><%= @user.first_name_kana %><%= @user.last_name_kana %>さんの会員詳細 </h2>
+      <h2><%= @user.last_name_kana %><%= @user.first_name_kana %>さんの会員詳細 </h2>
     </div>
     <table class="table">
       <tr>
@@ -48,9 +48,9 @@
         <td>会員ステータス </td>
         <td>
           <% if @user.is_active? %>
-            <p class="">有効</p>
+            <p class="text-success">有効</p>
           <% else %>
-            <p class="text-success">退会済</p>
+            <p class="text-danger">退会済</p>
           <% end %>
         </td>
       </tr>
