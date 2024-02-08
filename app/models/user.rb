@@ -39,7 +39,7 @@ GUEST_USER_EMAIL = "guest@example.com"
       @user = User.all
     end
   end
-  
+  #会員ステータス
   def user_status
     if is_active?
       "有効"
@@ -47,7 +47,7 @@ GUEST_USER_EMAIL = "guest@example.com"
       "退会"
     end
   end
-  
+  #フルネーム
   # def full_name
   #   last_name + " " + first_name
   # end

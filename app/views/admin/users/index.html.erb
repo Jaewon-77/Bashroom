@@ -27,7 +27,7 @@
                   <td>
                     <%= link_to admin_user_path(user) do %><%= user.first_name %><%= user.last_name %><% end %>
                   </td>
-                  <td><%= user.first_name_kana %><%= user.last_name_kana %></td>
+                  <td><%= user.last_name_kana %><%= user.first_name_kana %></td>
                   <td><%= user.age %></td>
                   <td><%= user.nickname %></td>
                   <td><%= user.email %></td>
@@ -37,9 +37,9 @@
                   <td><%= user.size %></td>
                   <td>
                     <% if user.is_active? %>
-                      <p class="text-center">有効</p>
+                      <p class="text-center text-success">有効</p>
                     <% else %>
-                      <p class="text-center text-success">退会済</p>
+                      <p class="text-center text-danger">退会済</p>
                     <% end %>
                   </td>
                 </tr>

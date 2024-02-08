@@ -6,10 +6,15 @@ class ShoesReview < ApplicationRecord
   has_many :post_tag, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-
+#靴機能点数合計
   def sum_total
     total = self.traction + self.cushion + self.fit + self.support + self.weight
     return total
+  end
+
+#いいね機能
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
 
