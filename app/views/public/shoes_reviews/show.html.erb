@@ -70,7 +70,7 @@
          <% end %>
          </div>
          <% if @comment.user == current_user %>
-      <%= link_to "削除", shoes_review_comment_path(omment.shoes_review, comment), method: :delete %>
+      <%= link_to "削除", shoes_review_comment_path(@comment.shoes_review, comment), method: :delete %>
     <% end %>
 <div>
   <%= form_with model: [@shoes_review, @comment], url: public_shoes_review_path(@shoes_review.id) do |f| %>
