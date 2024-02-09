@@ -5,6 +5,8 @@ class ShoesReview < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :post_tag, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  #タグ機能
+  has_many :tags, through: :post_tags
 
 #靴機能点数合計
   def sum_total

@@ -24,10 +24,13 @@
     <div class="col-12">
       <div style="padding: 15px; margin-bottom: 10px; border: 5px double #660000; background-color: #AFEEEE;">
       <table class="table table-bordered">
-        <!--<tr>-->
-        <!--  <th class="table-active w-25">メールアドレス</th>-->
-          <%#= @user.email %>
-        <!--</tr>-->
+        <% if @user.id == current_user.id %>
+        <tr>
+        <th class="table-active w-25">メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <%else%>
+        <% end %>
         <tr>
           <th class="table-active w-25">氏名</th>
           <td><%= @user.last_name %><%= @user.first_name %></td>
@@ -44,10 +47,13 @@
           <th class="table-active w-25">年齢</th>
           <td><%= @user.age %></td>
         </tr>
-        <tr>
+        <% if @user.id == current_user.id %>
+         <tr>
           <th class="table-active w-25">住所</th>
           <td><%= @user.address %></td>
         </tr>
+        <%else%>
+        <% end %>
         <tr>
           <th class="table-active w-25">好きなバスケットボールシューズブランド名</th>
           <td><%= @user.favorite_brand %></td>

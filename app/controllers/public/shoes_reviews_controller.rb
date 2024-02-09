@@ -4,11 +4,21 @@ class Public::ShoesReviewsController < ApplicationController
   end
 
   def create
+    # @shoes_review = current_user.shoes_reviews.new(shoes_review_params)
+    # tags = params[:shoes_review][:tag_id].split(',')
+    # if @shoes_review.save
+    # #@shoes_reviewをつけることpostモデルの情報を.save_tagsに引き渡してメソッドを走らせることができる
+    #   @shoes_review.save_tags(tags)
+    #   redirect_to public_homes_top_path, success: t('shoes_reviews.create.create_success')
+    # else
+    #   render :new
+    # end
      @shoes_review = ShoesReview.new(shoes_review_params)
      @shoes_review.user_id = current_user.id
      if @shoes_review.save
        flash[:notice] = "successfully"
        redirect_to public_shoes_review_path(@shoes_review.id)
+       #redirect_to request.referer
      else
        flash[:notice] = "error"
        @shoes_reviews = ShoesReview.all
@@ -29,6 +39,7 @@ class Public::ShoesReviewsController < ApplicationController
   def show
     @shoes_review = ShoesReview.find(params[:id])
     @user = @shoes_review.user
+    @comment = ShoesReview.new
   end
 
   def destroy
