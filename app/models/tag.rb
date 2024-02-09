@@ -1,5 +1,5 @@
 class Tag < ApplicationRecord
-  
-  has_many :post_tag, dependent: :destroy
-  
+　#タグ機能
+  has_many :post_tags, dependent: :destroy
+
 end
