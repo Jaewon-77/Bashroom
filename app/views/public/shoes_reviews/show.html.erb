@@ -48,14 +48,20 @@
           <td><%= @shoes_review.sum_total %></td>
           </tr>
           </table>
-
+<div>
+    <!-- タグリスト -->
+      <% @shoes_review_tags.each do |tag| %>
+      <i class="fa-sharp fa-solid fa-tag"></i>
+        <%= link_to tag.name, public_search_tag_path(tag_id: tag.id) %>
+      <% end %>
+  </div>
 
 
         <div style="width:400px; height:300px; float:left;">
           <h2>バスケットボールレビュー</h2>
           <h3><%= @shoes_review.review %></h3>
         </div>
-
+        
         <div>
         <p>コメント件数：<%= @shoes_review.comments.count %></p>
          <% @shoes_review.comments.each do |comment| %>
@@ -70,7 +76,7 @@
          <% end %>
          </div>
          <% if @comment.user == current_user %>
-      <%= link_to "削除", shoes_review_comment_path(@comment.shoes_review, comment), method: :delete %>
+      <%= link_to "削除", shoes_review_comment_path(@comment.shoes_review, comment), method: :delete, "data-confirm" => "本当に削除しますか？" , class: "btn btn-sm btn-danger destroy" %>
     <% end %>
 <div>
   <%= form_with model: [@shoes_review, @comment], url: public_shoes_review_comments_path(@shoes_review.id) do |f| %>
@@ -94,13 +100,7 @@
     </p>
   <% end %>
   
-  <div>
-    <!-- タグリスト -->
-      <% @shoes_review_tags.each do |shoes_review_tag| %>
-      <i class="fa-sharp fa-solid fa-tag"></i>
-        <%= link_to tag.name,public_search_tag_path(tag_id: tag.id) %>
-      <% end %>
-  </div>
+  
 
 
 

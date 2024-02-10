@@ -15,6 +15,7 @@ devise_for :users,skip: [:passwords], controllers: {
   namespace :admin do
     get 'homes/top'
     resources :users, only: [:index, :show, :edit, :update]
+    get 'review_comments', to: "review_comments#index"
   end
 
   namespace :public do
