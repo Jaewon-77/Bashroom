@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 2024_02_04_082947) do
   create_table "post_tags", force: :cascade do |t|
     t.integer "shoes_review_id", null: false
     t.integer "tag_id", null: false
-    t.integer "post", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
