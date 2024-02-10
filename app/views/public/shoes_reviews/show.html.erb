@@ -66,15 +66,15 @@
            <% end %>
           </p>
          <%= comment.user.nickname %>
-         <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+         <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.user_comment %>
          <% end %>
          </div>
          <% if @comment.user == current_user %>
       <%= link_to "削除", shoes_review_comment_path(@comment.shoes_review, comment), method: :delete %>
     <% end %>
 <div>
-  <%= form_with model: [@shoes_review, @comment], url: public_shoes_review_path(@shoes_review.id) do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+  <%= form_with model: [@shoes_review, @comment], url: public_shoes_review_comments_path(@shoes_review.id) do |f| %>
+    <%= f.text_area :user_comment, rows: '5', placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
   <% end %>
 </div>
@@ -93,6 +93,14 @@
       <% end %>
     </p>
   <% end %>
+  
+  <div>
+    <!-- タグリスト -->
+      <% @shoes_review_tags.each do |shoes_review_tag| %>
+      <i class="fa-sharp fa-solid fa-tag"></i>
+        <%= link_to tag.name,public_search_tag_path(tag_id: tag.id) %>
+      <% end %>
+  </div>
 
 
 

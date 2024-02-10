@@ -19,7 +19,7 @@ class Public::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment_post)
+    params.require(:shoes_review).permit(:user_comment)
   end
 
   

@@ -19,7 +19,7 @@ devise_for :users,skip: [:passwords], controllers: {
 
   namespace :public do
     resources :shoes_reviews do
-      resource :favorite, only: [:create, :destroy] 
+      resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
     # resources :users, only: [:edit, :update, :show]
@@ -34,6 +34,8 @@ devise_for :users,skip: [:passwords], controllers: {
     get '/users/:id/favorites', to: 'users#favorites', as: 'users_favorites'
 
     get "search" => "searches#search"
+    # タグの検索で使用する
+    get "search_tag" => "shoes_reviews#search_tag"
 
   end
 
