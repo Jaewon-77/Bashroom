@@ -21,11 +21,17 @@
               <i class="fa-solid text-dark fa-users">会員一覧</i>
             <% end %>
           </li>
+          <li class="nav-item mx-3">
+            <%= link_to admin_review_comments_path do %>
+              <i class="fa-solid text-dark fa-users">コメント一覧</i>
+            <% end %>
+          </li>
           <li class="nav-item ml-3">
             <%= link_to destroy_admin_session_path, method: :delete do %>
               <i class="fa-solid text-dark fa-user">ログアウト</i>
             <% end %>
           </li>
+          
 
         <!--ログインした時ー-->
         <% elsif user_signed_in? %>
