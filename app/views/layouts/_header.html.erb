@@ -31,12 +31,12 @@
               <i class="fa-solid text-dark fa-user">ログアウト</i>
             <% end %>
           </li>
-          
+
 
         <!--ログインした時ー-->
         <% elsif user_signed_in? %>
           <li class="nav-item mr-3">
-            <%= link_to public_users_mypage_path(current_user) do %>
+            <%= link_to public_user_path(current_user) do %>
               <%= image_tag 'mypage.PNG', :size => "135x135" %>
               <!--<i class="fa-solid text-dark fa-user">マイページ</i>-->
             <% end %>

@@ -3,7 +3,7 @@
     <div class="col-md-12 mx-auto my-3">
       <h2><%= @shoes_review.title %>のReview</h2>
       <p>
-        <%= link_to public_users_mypage_path(@shoes_review.user.id)  do %>
+        <%= link_to public_user_path(@shoes_review.user.id)  do %>
           <% if @user.image.attached? %>
           <%= image_tag @user.image, class: "rounded-circle", size: "50x50" %>
           <% else %>
@@ -61,7 +61,7 @@
           <h2>バスケットボールレビュー</h2>
           <h3><%= @shoes_review.review %></h3>
         </div>
-        
+
         <div>
         <p>コメント件数：<%= @shoes_review.comments.count %></p>
          <% @shoes_review.comments.each do |comment| %>
@@ -99,8 +99,8 @@
       <% end %>
     </p>
   <% end %>
-  
-  
+
+
 
 
 

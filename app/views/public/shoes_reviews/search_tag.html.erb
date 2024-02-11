@@ -23,7 +23,7 @@
      <% @tag.shoes_reviews.each do |shoes_review| %>
        <tr>
          <td><%= shoes_review.user.nickname %></td>
-         <td><%= link_to "User詳細", public_users_mypage_path(shoes_review.user.id) %></td>
+         <td><%= link_to "User詳細", public_user_path(shoes_review.user.id) %></td>
          <td>
            <% if shoes_review.user.image.attached? %>
              <%= image_tag shoes_review.user.image, class: "rounded-circle", size: "200x200" %>

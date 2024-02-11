@@ -26,8 +26,17 @@ devise_for :users,skip: [:passwords], controllers: {
     # resources :users, only: [:edit, :update, :show]
     get 'homes/top'
     get 'homes/about'
+    
+    resources :users, only: [:show] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+      # member do
+      #   get 'favorites'
+      # end
+    end
 
-    get "users/:id/mypage", to: "users#show", as: 'users_mypage'
+    #get "users/:id/mypage", to: "users#show", as: 'users_mypage'
     get "users/information/edit", to: "users#edit"
     patch "users/information", to: "users#update"
     get 'users/unsubscribe', to: "users#unsubscribe"
@@ -37,6 +46,8 @@ devise_for :users,skip: [:passwords], controllers: {
     get "search" => "searches#search"
     # タグの検索で使用する
     get "search_tag" => "shoes_reviews#search_tag"
+    
+    
 
   end
 
