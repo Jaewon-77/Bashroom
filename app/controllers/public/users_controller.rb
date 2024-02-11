@@ -3,6 +3,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @shoes_reviews = @user.shoes_reviews
   end
 
   def edit
@@ -12,7 +13,7 @@ class Public::UsersController < ApplicationController
   def update
     user = User.find(current_user.id)
     if user.update(user_params)
-      redirect_to public_users_mypage_path(user.id), notice: "変更内容を保存しました。"
+      redirect_to public_user_path(user.id), notice: "変更内容を保存しました。"
     else
       render :edit
     end
@@ -30,8 +31,7 @@ class Public::UsersController < ApplicationController
    #いいねした投稿文一覧機能
   def favorites
     @user = User.find(params[:id])
-    favorites = Favorite.where(user_id: @user.id).pluck(:shoes_review_id)
-    @shoes_reviews = ShoesReview.find(favorites)
+    @shoes_reviews = @user.favorite_shoes_reviews
   end
 
   private

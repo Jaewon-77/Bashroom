@@ -12,6 +12,9 @@
 
   <body>
     <%= render 'layouts/header' %>
+    <% if current_user && !@is_profile_set %>
+      <div><%= link_to public_user_path(current_user) do %>★プロフィールを全て入力してください★ <% end %></div>
+    <% end %>
     <main>
       <%= yield %>
     </main>

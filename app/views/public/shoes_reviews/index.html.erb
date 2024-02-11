@@ -32,59 +32,65 @@
            <th>Basketball Shoes Photo</th>
           <th>Title</th>
           <th>Favorite</th>
-          <th>Tag</th>
+          <th>Follow/Unfollow</th>
         </thead>
         <tbody>
-     <% @shoes_reviews.each do |shoes_review| %>
-       <tr>
-         <td><%= shoes_review.user.nickname %></td>
-         <td><%= link_to "User詳細", public_users_mypage_path(shoes_review.user.id) %></td>
-         <td>
-           <% if @user.image.attached? %>
-             <%= image_tag @user.image, class: "rounded-circle", size: "200x200" %>
-           <% else %>
-             <%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %>
-           <% end %>
-         </td>
-         <td>
-           <% if shoes_review.image.attached? %>
-             <%= image_tag shoes_review.image, size: "200x200" %>
-           <% else %>
-             <%= image_tag 'no_image', size: "200x200" %>
-           <% end %>
-         </td>
-         <td>
-           <%= link_to public_shoes_review_path(shoes_review.id) do %>
-             <%= shoes_review.title  %>
-           <% end %>
-         </td>
-         <td>
-           <% if shoes_review.favorited_by?(current_user) %>
-            <p>
-      <%= link_to public_shoes_review_favorite_path(shoes_review), method: :delete do %>
-        ♥<%= shoes_review.favorites.count %>
-        <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to public_shoes_review_favorite_path(shoes_review), method: :post do %>
-        ♡<%= shoes_review.favorites.count %>
-      <% end %>
-    </p>
-  <% end %>
-         </td>
-         
-
-         <td>
-           <p></p>
-         </td>
-         <td><td></td></td>
-
-       </tr>
-     <% end %>
-       </tbody>
-
-     </table>
+          <% @shoes_reviews.each do |shoes_review| %>
+            <tr>
+              <td><%= shoes_review.user.nickname %></td>
+              <td><%= link_to "User詳細", public_user_path(shoes_review.user.id) %></td>
+              <td>
+                <% if shoes_review.user.image.attached? %>
+                  <%= image_tag shoes_review.user.image, class: "rounded-circle", size: "200x200" %>
+                <% else %>
+                  <%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %>
+                <% end %>
+              </td>
+              <td>
+                <% if shoes_review.image.attached? %>
+                  <%= image_tag shoes_review.image, size: "200x200" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "200x200" %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to public_shoes_review_path(shoes_review.id) do %>
+                  <%= shoes_review.title  %>
+                <% end %>
+              </td>
+              <td>
+                <% if shoes_review.favorited_by?(current_user) %>
+                  <p>
+                    <%= link_to public_shoes_review_favorite_path(shoes_review), method: :delete do %>
+                      ♥<%= shoes_review.favorites.count %>
+                    <% end %>
+                  </p>
+                <% else %>
+                  <p>
+                    <%= link_to public_shoes_review_favorite_path(shoes_review), method: :post do %>
+                      ♡<%= shoes_review.favorites.count %>
+                    <% end %>
+                  </p>
+                <% end %>
+              </td>
+              <td>
+                <% if shoes_review.user != current_user %>
+                  <% if current_user.following?(shoes_review.user) %>
+                    <%= link_to "フォロー外す", public_user_relationships_path(shoes_review.user), method: :delete %>
+                  <% else %>
+                    <%= link_to "フォローする", public_user_relationships_path(shoes_review.user), method: :post %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                <p></p>
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
