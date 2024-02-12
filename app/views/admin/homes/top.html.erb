@@ -1,2 +1,38 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="row">
+  <% @shoes_reviews.first(4).each do |shoes_review| %>
+    <div class="col-md-3 col-sm-6">
+    <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+      <%= link_to admin_review_shoes_reviews_path do %>
+        <% if shoes_review.image.attached? %>
+          <%= image_tag shoes_review.image, size: "100x100" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "100x100" %>
+        <% end %>
+      <% end %>
+        <div class="card-body">
+          <p class="card-text">Review Title:<%= shoes_review.title %></p>
+          <p class="card-text">Reviewer Nickname:<%= shoes_review.user.nickname %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+        <!--  <#% @users.first(4).each do |user| %>-->
+        <!--    <div class="col-md-3 col-sm-6">-->
+        <!--      <div class="card w-100 bg-transparent border-0" style="width: 18rem;">-->
+        <!--        <%#= link_to public_shoes_review_path(shoes_review) do %>-->
+        <!--        <%# if shoes_review.image.attached? %>-->
+        <!--    <%#= image_tag shoes_review.image, size: "200x200" %>-->
+        <!--  <%# else %>-->
+        <!--    <%#= image_tag 'no_image', size: "200x200" %>-->
+        <!-- <%# end %>-->
+        <!--        <#% end %>-->
+        <!--        <div class="card-body">-->
+        <!--          <p class="card-text">Review Title:<%#= shoes_review.title %></p>-->
+        <!--          <p class="card-text">Reviewer Nickname:<%#= shoes_review.user.nickname %></p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--    </div>-->
+        <!--  <%# end %>-->
+</div>

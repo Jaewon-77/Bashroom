@@ -16,6 +16,7 @@ devise_for :users,skip: [:passwords], controllers: {
     get 'homes/top'
     resources :users, only: [:index, :show, :edit, :update]
     get 'review_comments', to: "review_comments#index"
+    get 'review_shoes_reviews', to: "review_shoes_reviews#index"
   end
 
   namespace :public do
@@ -26,7 +27,7 @@ devise_for :users,skip: [:passwords], controllers: {
     # resources :users, only: [:edit, :update, :show]
     get 'homes/top'
     get 'homes/about'
-    
+
     resources :users, only: [:show] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
@@ -42,12 +43,13 @@ devise_for :users,skip: [:passwords], controllers: {
     get 'users/unsubscribe', to: "users#unsubscribe"
     patch 'users/withdraw', to: "users#withdraw"
     get '/users/:id/favorites', to: 'users#favorites', as: 'users_favorites'
+    get '/users/:id/user_shoes_reviews', to: 'users#user_shoes_reviews', as: 'users_user_shoes_reviews'
 
     get "search" => "searches#search"
     # タグの検索で使用する
     get "search_tag" => "shoes_reviews#search_tag"
-    
-    
+
+
 
   end
 

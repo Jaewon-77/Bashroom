@@ -1,10 +1,21 @@
  <header>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: black;">
-
-    <a class="navbar-brand mx-5 img-thumbnail" href="/public/homes/top"><%= image_tag "logo1.PNG", :size => "135x135" %></a>
+<% if admin_signed_in? %><!--管理者ログイン時ー-->
+    <a class="navbar-brand mx-5 img-thumbnail" href="/admin/homes/top"><%= image_tag "logo1.PNG", :size => "135x135" %></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+<% elsif user_signed_in? %><!--ログインした時ー-->
+<a class="navbar-brand mx-5 img-thumbnail" href="/public/homes/top"><%= image_tag "logo1.PNG", :size => "135x135" %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+<% else %><!--ログインしてないー-->
+<a class="navbar-brand mx-5 img-thumbnail" href="/public/homes/top"><%= image_tag "logo1.PNG", :size => "135x135" %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+<% end %>
 
     <div class="collapse navbar-collapse flex-column">
       <ul class="nav ml-auto mx-5">
@@ -19,6 +30,11 @@
           <li class="nav-item mx-3">
             <%= link_to admin_users_path do %>
               <i class="fa-solid text-dark fa-users">会員一覧</i>
+            <% end %>
+          </li>
+          <li class="nav-item mx-3">
+            <%= link_to admin_review_shoes_reviews_path do %>
+              <i class="fa-solid text-dark fa-users">レビュー一覧</i>
             <% end %>
           </li>
           <li class="nav-item mx-3">
