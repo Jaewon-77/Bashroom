@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <h3>ユーザーレビュー一覧</h3>
+  <table class="table mt-3">
+    <tr>
+      <th class="col-2">名前</th>
+      <th class="col-2">ニックネーム</th>
+      <th class="col-1">写真</th>
+      <th class="col-8">レビュータイトル</th>
+      <th class="col-1">作成日</th>
+      <th class="col-1"></th>
+    </tr>
+    <% @shoes_reviews.each do |shoes_review| %>
+    <tr>
+      <td class="col-2">
+        <%= link_to admin_user_path(shoes_review.user) do %>
+          <%= @users.find(shoes_review.user_id).first_name %><%= @users.find(shoes_review.user_id).last_name %>
+        <% end %>
+      </td>
+    <td class="col-2"><%= shoes_review.user.nickname %></td>
+    <td class="col-1">
+      <% if shoes_review.image.attached? %>
+        <%= image_tag shoes_review.image, size: "100x100" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "100x100" %>
+      <% end %>
+    </td>
+    <td class="col-8"><%= shoes_review.title %></td>
+    <td class="col-1"><%= shoes_review.created_at.strftime('%Y/%m/%d') %></td>
+    <td class="col-1">
+      <%= link_to '削除', admin_review_shoes_reviews_path(shoes_review), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-sm btn-danger" %>
+    </td>
+  </tr>
+  <% end %>
+  </table>
+</div>
