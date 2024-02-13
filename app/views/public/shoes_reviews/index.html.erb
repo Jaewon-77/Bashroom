@@ -1,36 +1,32 @@
-
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col">
+    <div class="col-1">
       <%= image_tag "shoesreview.PNG", :size => "143x143" %>
-      <%#= render 'users/userinfo', user: @user %>
     </div>
-    <div class="col">
-      <br>
-      <br>
-      <br>
+    <div class="col-11 row">
       <!--検索機能-->
+      <div class="col-6 offset-2">
       <%= render 'public/searches/search' %>
-      <div>
+      </div>
+      <div class="col-10 offset-2">
      <!--タグリスト-->
        <% @tag_list.each do |list|%>
        <i class="fa-sharp fa-solid fa-tag"></i>
-       <%=link_to list.name,public_search_tag_path(tag_id: list.id) %>
-       <%="(#{list.shoes_reviews.count})" %>
+         <%=link_to list.name,public_search_tag_path(tag_id: list.id) %>
+         <%="(#{list.shoes_reviews.count})" %>
        <% end %>
       </div>
        <div class="col-11 px-sm-0 text-right mt-3">
         <%= link_to new_public_shoes_review_path do %>
-        <button type="button" class="btn btn-light rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+          <button type="button" class="btn btn-light rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
         <% end %>
       </div>
-      <div style="padding: 15px; margin-bottom: 10px; border: 5px double #660000; background-color: #AFEEEE;">
-      <table class="table table-dark table-striped　table-bordered">
+      <div style="padding: 15px; margin-top: 30px; margin-bottom: 30px; border: 5px double #660000;">
+      <table class="table table-dark table-striped　table-bordered table-hover text-white text-center" style="background-color: black">
         <thead>
-          <th colspan="1"></th>
           <th>User Nickname</th>
           <th>User Profile Photo</th>
-           <th>Basketball Shoes Photo</th>
+          <th>Basketball Shoes Photo</th>
           <th>Title</th>
           <th>Favorite</th>
           <th>Follow/Unfollow</th>
@@ -45,16 +41,16 @@
               </td>
               <td>
                 <% if shoes_review.user.image.attached? %>
-                  <%= image_tag shoes_review.user.image, class: "rounded-circle", size: "200x200" %>
+                  <%= image_tag shoes_review.user.image, class: "rounded-circle", size: "50x50" %>
                 <% else %>
-                  <%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %>
+                  <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
                 <% end %>
               </td>
               <td>
                 <% if shoes_review.image.attached? %>
-                  <%= image_tag shoes_review.image, size: "200x200" %>
+                  <%= image_tag shoes_review.image, size: "50x50" %>
                 <% else %>
-                  <%= image_tag 'no_image', size: "200x200" %>
+                  <%= image_tag 'no_image', size: "50x50" %>
                 <% end %>
               </td>
               <td>
