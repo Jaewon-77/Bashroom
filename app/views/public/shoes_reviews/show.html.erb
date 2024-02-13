@@ -1,31 +1,28 @@
 <div class="container">
   <div class="row my-3">
-    <div class="col-md-12 mx-auto my-3">
-      <h2><%= @shoes_review.title %>のReview</h2>
-      <p>
-        <%= link_to public_user_path(@shoes_review.user.id)  do %>
+    <div class="col-12 mx-auto my-3">
+      <h2 class="col-5 text-center" style="border: 5px double #FF1A6F;"><%= @shoes_review.title %>のReview</h2>
+        <h2 class="col-3" style="border: 5px double #FF1A6F;"><%= link_to public_user_path(@shoes_review.user.id)  do %>
           <% if @user.image.attached? %>
-          <%= image_tag @user.image, class: "rounded-circle", size: "50x50" %>
+            <%= image_tag @user.image, class: "rounded-circle", size: "40x40" %>
           <% else %>
-          <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
+            <%= image_tag 'no_image', class: "rounded-circle", size: "40x40" %>
           <% end %>
-          <% end %>
+        <% end %>
         投稿者:<%=@user.nickname%>
-      </p>
-    </div>
-    <div class="col-md-10">
-      <div class="row" style="margin-top: 50px;">
-        <div class="col-12">バスケットボールシューズ写真</div>
-        <div style="float: left; margin: 15px 50px;">
-          <% if @shoes_review.image.attached? %>
-            <%= image_tag @shoes_review.image, size: "200x200" %>
-          <% else %>
-            <%= image_tag 'no_image', size: "200x200" %>
-         <% end %>
-        </div>
-        <div class="col-12">バスケットボールシューズ評価</div>
+      </h2>
 
-        <table class="table table-dark table-hover">
+
+      <h3 class="col-4 text-center" style="border: 5px double #FF1A6F; margin-bottom: 10px;">BasketballShoes Photo
+        <% if @shoes_review.image.attached? %>
+          <%= image_tag @shoes_review.image, size: "250x250" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
+        </h3>
+   
+        <h3 class="col-4" style="border: 5px double #FF1A6F;">BasketballShoes Score</h3>
+        <table class="table table-dark table-hover" style="border: 5px double #FF1A6F;">
           <thead>
    　　　　　　 <tr>
     　　       <th scope="col">★</th>
@@ -48,36 +45,34 @@
           <td><%= @shoes_review.sum_total %></td>
           </tr>
           </table>
-<div>
+   <div>
     <!-- タグリスト -->
       <% @shoes_review_tags.each do |tag| %>
       <i class="fa-sharp fa-solid fa-tag"></i>
         <%= link_to tag.name, public_search_tag_path(tag_id: tag.id) %>
       <% end %>
-  </div>
 
 
-        <div style="width:400px; height:300px; float:left;">
-          <h2>バスケットボールレビュー</h2>
-          <h3><%= @shoes_review.review %></h3>
-        </div>
 
-        <div>
-        <p>コメント件数：<%= @shoes_review.comments.count %></p>
+       
+          <h2 class="col-6" style="border: 5px double #FF1A6F;">バスケットボールシューズレビュー</h2>
+          <h3 class="col-12" style="border: 5px double #FF1A6F;"><%= @shoes_review.review %></h3>
+          <p class="col-2" style="border: 5px double #FF1A6F;">コメント件数：<%= @shoes_review.comments.count %></p>
          <% @shoes_review.comments.each do |comment| %>
-         <p><% if @user.image.attached? %>
+         <p class="col-5" style="border: 5px double #FF1A6F;"><% if @user.image.attached? %>
              <%= image_tag @user.image, class: "rounded-circle", size: "30x30" %>
            <% else %>
              <%= image_tag 'no_image', class: "rounded-circle", size: "30x30" %>
            <% end %>
-          </p>
+          
          <%= comment.user.nickname %>
-         <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.user_comment %>
-         <% end %>
-         </div>
+         <%= comment.created_at.strftime('%Y/%m/%d') %><br>
+         <%= comment.user_comment %>
+         <% end %></p>
+         <p>
          <% if @comment.user == current_user %>
       <%= link_to "削除", shoes_review_comment_path(@comment.shoes_review, comment), method: :delete, "data-confirm" => "本当に削除しますか？" , class: "btn btn-sm btn-danger destroy" %>
-    <% end %>
+    <% end %></p>
 <div>
   <%= form_with model: [@shoes_review, @comment], url: public_shoes_review_comments_path(@shoes_review.id) do |f| %>
     <%= f.text_area :user_comment, rows: '5', placeholder: "コメントをここに" %>
