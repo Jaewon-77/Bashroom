@@ -10,12 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background-color: #000000; color: white;">
     <%= render 'layouts/header' %>
     <% if current_user && !@is_profile_set %>
       <div><%= link_to public_user_path(current_user) do %>★プロフィールを全て入力してください★ <% end %></div>
     <% end %>
-    <main>
+    <main style="border: 5px double #660000;">
       <%= yield %>
     </main>
 
