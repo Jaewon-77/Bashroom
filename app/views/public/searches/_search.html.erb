@@ -1,12 +1,12 @@
 <div style="padding: 3px; margin-top: 25px; margin-bottom: 3px; border: 3px double #FF0066;">
-<% if user_signed_in? %>
-<div class="search_form text-center">
-  <%= form_with url: public_search_path, local: true, method: :get do |f| %>
-    <%= f.text_field :word %>
-    <%= f.select :range, options_for_select([['Nickname'], ['ShoesReview Title']]) %>
-    <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-    <%= f.submit "検索", class: "btn-sm btn-primary" %>
+  <% if user_signed_in? %>
+    <div class="search_form text-center">
+      <%= form_with url: public_search_path, local: true, method: :get do |f| %>
+        <%= f.text_field :word %>
+        <%= f.select :range, options_for_select([['Nickname'], ['ShoesReview Title']]) %>
+        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+        <%= f.submit "検索", class: "btn-sm btn-primary" %>
+      <% end %>
+    </div>
   <% end %>
-</div>
-<% end %>
 </div>

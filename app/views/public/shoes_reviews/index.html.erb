@@ -6,22 +6,22 @@
     <div class="col-11 row">
       <!--検索機能-->
       <div class="col-6 offset-2">
-      <%= render 'public/searches/search' %>
+   　　   <%= render 'public/searches/search' %>
       </div>
       <div class="col-10 offset-2">
-     <!--タグリスト-->
-       <% @tag_list.each do |list|%>
-       <i class="fa-sharp fa-solid fa-tag"></i>
+        <!--タグリスト-->
+        <% @tag_list.each do |list|%>
+         <i class="fa-sharp fa-solid fa-tag"></i>
          <%=link_to list.name,public_search_tag_path(tag_id: list.id) %>
-         <%="(#{list.shoes_reviews.count})" %>
-       <% end %>
+           <%="(#{list.shoes_reviews.count})" %>
+         <% end %>
       </div>
-       <div class="col-11 px-sm-0 text-right mt-3">
+      <div class="col-1 offset-11 mt-3">
         <%= link_to new_public_shoes_review_path do %>
-          <button type="button" class="btn btn-light rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+          <button type="button" class="btn btn-light rounded-circle p-0" style="width:2rem; height:2rem;">＋</button>
         <% end %>
       </div>
-      <div style="padding: 15px; margin-top: 30px; margin-bottom: 30px; border: 5px double #660000;">
+      <div class="col-12" style="padding: 15px; margin-top: 30px; margin-bottom: 30px; border: 5px double #FF1A6F;">
       <table class="table table-dark table-striped　table-bordered table-hover text-white text-center" style="background-color: black">
         <thead>
           <th>User Nickname</th>
@@ -29,7 +29,6 @@
           <th>Basketball Shoes Photo</th>
           <th>Title</th>
           <th>Favorite</th>
-          <th>Follow/Unfollow</th>
         </thead>
         <tbody>
           <% @shoes_reviews.each do |shoes_review| %>
@@ -62,35 +61,23 @@
                 <% if shoes_review.favorited_by?(current_user) %>
                   <p>
                     <%= link_to public_shoes_review_favorite_path(shoes_review), method: :delete do %>
-                      ♥<%= shoes_review.favorites.count %>
+                      ♥
+                      <%= shoes_review.favorites.count %>
                     <% end %>
                   </p>
-                <% else %>
-                  <p>
-                    <%= link_to public_shoes_review_favorite_path(shoes_review), method: :post do %>
-                      ♡<%= shoes_review.favorites.count %>
-                    <% end %>
-                  </p>
-                <% end %>
-              </td>
-              <td>
-                <% if shoes_review.user != current_user %>
-                  <% if current_user.following?(shoes_review.user) %>
-                    <%= link_to "フォロー外す", public_user_relationships_path(shoes_review.user), method: :delete %>
                   <% else %>
-                    <%= link_to "フォローする", public_user_relationships_path(shoes_review.user), method: :post %>
+                    <p>
+                      <%= link_to public_shoes_review_favorite_path(shoes_review), method: :post do %>
+                        ♡
+                        <%= shoes_review.favorites.count %>
+                      <% end %>
+                    </p>
                   <% end %>
-                <% end %>
-              </td>
-              <td>
-                <p></p>
-              </td>
-              <td></td>
-              <td></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
