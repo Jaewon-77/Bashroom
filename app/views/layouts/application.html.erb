@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/95abb71f32.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="background-color: #000000; color: white;">
+  <body style="background-color: #000000; color: white; font-family: 'Sacramento', cursive;">
     <%= render 'layouts/header' %>
     <% if current_user && !@is_profile_set %>
       <div><%= link_to public_user_path(current_user) do %>★プロフィールを全て入力してください★ <% end %></div>
     <% end %>
-    <main style="border: 5px double #660000;">
+    <main style="border: 5px double #FF1A6F; ">
       <%= yield %>
     </main>
 

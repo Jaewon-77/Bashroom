@@ -1,41 +1,23 @@
 <div class="container">
   <div class="row">
     <div class="col mt-4">
-      <h2 class="text-center mb-4" style="font-weight:bold; color:#A07B35; font-family: serif;">登録情報編集</h2>
-
-      <div style="padding: 15px; margin-bottom: 10px; border: 5px double #660000; background-color: #AFEEEE;">
+      <h2 class="text-center mb-4" style="font-weight:bold; color:#FF1A6F; font-family: Rounded M+ 1c;">登録情報編集</h2>
+      <div style="padding: 15px; margin-bottom: 10px; border: 5px double #FF1A6F; font-family: 'Sacramento', cursive;">
         <%= form_with model: @user, url: public_users_information_path, method: :patch,  local: true do |f| %>
         <table>
           <tbody>
             <tr>
-              <td class="p-1">画像</td>
+              <td class="p-1">Profile Photo</td>
               <td></td>
               <td class="pl-1">
                 <%= f.file_field :image, accept: "image/*" %>
               </td>
             </tr>
             <tr>
-              <td class="p-1"><%= f.label :email, "メールアドレス" %></td>
+              <td class="p-1"><%= f.label :email, "E-mail" %></td>
               <td></td>
               <td class="pl-1"><%= f.email_field :email, autocomplete: "email" %></td>
             </tr>
-
-            <tr>
-              <td class="p-1">氏名</td>
-              <td class="p-1">
-                <%= f.label :last_name, "(姓)" %>
-              </td>
-              <td class="pl-1">
-                <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-              </td>
-              <td class="pl-4">
-                <%= f.label :first_name, "(名)" %>
-              </td>
-              <td class="pl-1">
-                <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-              </td>
-            </tr>
-
             <tr>
               <td class="p-1">フリガナ</td>
               <td class="p-1">
@@ -51,15 +33,28 @@
                 <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
               </td>
             </tr>
-
             <tr>
-              <td class="p-1"><%= f.label :nickname, "ニックネーム" %></td>
+              <td class="p-1">氏名</td>
+              <td class="p-1">
+                <%= f.label :last_name, "(姓)" %>
+              </td>
+              <td class="pl-1">
+                <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+              </td>
+              <td class="pl-4">
+                <%= f.label :first_name, "(名)" %>
+              </td>
+              <td class="pl-1">
+                <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+              </td>
+            </tr>
+            <tr>
+              <td class="p-1"><%= f.label :nickname, "Nickname" %></td>
               <td></td>
               <td class="pl-1">
                 <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
               </td>
             </tr>
-
             <tr>
               <td class="p-1"><%= f.label :age, "年齢" %></td>
               <td></td>
@@ -67,15 +62,13 @@
                 <%= f.text_field :age, autofocus: true, autocomplete: "age" %>
               </td>
             </tr>
-
             <tr>
-              <td class="p-1"><%= f.label :address, "住所（県または市まで）" %></td>
+              <td class="p-1"><%= f.label :address, "Address（県または市まで）" %></td>
               <td></td>
               <td  class="pl-1" colspan="3">
                 <%= f.text_field :address, size:"50", autofocus: true, autocomplete: "address" %>
               </td>
             </tr>
-
             <tr>
               <td class="p-1"><%= f.label :favorite_brand, "好きなバスケットボールシューズブランド名" %></td>
               <td></td>
@@ -83,7 +76,6 @@
                 <%= f.text_field :favorite_brand, autofocus: true, autocomplete: "favorite_brand" %>
               </td>
             </tr>
-
             <tr>
               <td class="p-1"><%= f.label :favorite_shoes_name, "好きなバスケットボールシューズ名" %></td>
               <td></td>
@@ -91,20 +83,18 @@
                 <%= f.text_field :favorite_shoes_name, autofocus: true, autocomplete: "favorite_shoes_name" %>
               </td>
             </tr>
-
             <tr>
-              <td class="p-1"><%= f.label :size, "バスケットボールシューズサイズ" %></td>
+              <td class="p-1"><%= f.label :size, "Shoes Size" %></td>
               <td></td>
               <td  class="pl-1" colspan="3">
                 <%= f.text_field :size, autofocus: true, autocomplete: "size" %>
               </td>
             </tr>
-
             <tr>
                 <td colspan="2"></td>
-                <td class="pt-2"><%= f.submit "編集内容を保存", class: "btn btn-success" , style: "width: 200px;" %></td>
+                <td class="pt-2"><%= f.submit "編集内容を保存", class: "btn btn-outline-success" , style: "width: 200px;" %></td>
                 <td></td>
-                <td class="pt-2"><%= link_to " 退会する", public_users_unsubscribe_path, class: "btn btn-danger"%></td>
+                <td class="pt-2"><%= link_to " 退会する", public_users_unsubscribe_path, class: "btn btn-outline-danger"%></td>
               </tr>
             </tbody>
           </table>

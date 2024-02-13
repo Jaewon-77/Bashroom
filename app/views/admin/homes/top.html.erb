@@ -18,21 +18,21 @@
   <% end %>
 </div>
 <div class="row">
-        <!--  <#% @users.first(4).each do |user| %>-->
-        <!--    <div class="col-md-3 col-sm-6">-->
-        <!--      <div class="card w-100 bg-transparent border-0" style="width: 18rem;">-->
-        <!--        <%#= link_to public_shoes_review_path(shoes_review) do %>-->
-        <!--        <%# if shoes_review.image.attached? %>-->
-        <!--    <%#= image_tag shoes_review.image, size: "200x200" %>-->
-        <!--  <%# else %>-->
-        <!--    <%#= image_tag 'no_image', size: "200x200" %>-->
-        <!-- <%# end %>-->
-        <!--        <#% end %>-->
-        <!--        <div class="card-body">-->
-        <!--          <p class="card-text">Review Title:<%#= shoes_review.title %></p>-->
-        <!--          <p class="card-text">Reviewer Nickname:<%#= shoes_review.user.nickname %></p>-->
-        <!--        </div>-->
-        <!--      </div>-->
-        <!--    </div>-->
-        <!--  <%# end %>-->
+          <% @users.first(4).each do |user| %>
+            <div class="col-md-3 col-sm-6">
+              <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+                <%= link_to admin_users_path(user) do %>
+                <% if user.image.attached? %>
+            <%= image_tag user.image, size: "100x100" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "100x100" %>
+         <% end %>
+                <% end %>
+                <div class="card-body">
+                  <p class="card-text">Review Title:<%= user.last_name %><%= user.first_name %></p>
+                  <p class="card-text">Reviewer Nickname:<%= user.nickname %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
 </div>
