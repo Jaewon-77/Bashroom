@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-3 mb-3 offset-1 text-center">
     <div class="col-12">
-      <h2>ユーザープロフィール</h2>
+      <h2><%= @user.nickname %>さんのプロフィール画面</h2>
     </div>
     <div class="col-12">
       <% if @user.image.attached? %>
@@ -15,15 +15,15 @@
     </div>
   </div>
   <div class="row mt-3">
-    <div class="col-2">
+    <div class="col-2 text-right" style="margin-bottom: 20px;">
       <% if @user.id == current_user.id %>
-      <%= link_to "編集", public_users_information_edit_path, class:"btn btn-primary" %>
+      <%= link_to "プロフィール編集", public_users_information_edit_path, class:"btn btn-outline-danger" %>
       <%else%>
       <% end %>
     </div>
     <div class="col-12">
-      <div style="padding: 15px; margin-bottom: 10px; border: 5px double #660000; background-color: #AFEEEE;">
-      <table class="table table-bordered">
+      <div style="padding: 15px; margin-bottom: 30px; border: 5px double #660000;">
+      <table class="table table-black table-striped　table-bordered table-hover text-white">
         <% if @user.id == current_user.id %>
         <tr>
         <th class="table-active w-25">メールアドレス</th>
@@ -67,11 +67,11 @@
         <% if @user.id == current_user.id %>
         <tr>
           <th class="table-active w-25">Follow</th>
-          <td><%= link_to public_user_followings_path(@user.id), class: 'text-blue' do %><%= @user.followings.count %> <% end %></td>
+          <td><%= link_to public_user_followings_path(@user.id), class: 'btn btn-outline-light' do %><%= @user.followings.count %> <% end %></td>
         </tr>
         <tr>
           <th class="table-active w-25">Follower</th>
-          <td><%= link_to public_user_followers_path(@user.id), class: 'text-blue' do %><%= @user.followers.count %> <% end %></td>
+          <td><%= link_to public_user_followers_path(@user.id), class: 'btn btn-outline-light' do %><%= @user.followers.count %> <% end %></td>
         </tr>
         <% else %>
         <tr>
@@ -83,26 +83,17 @@
           <td><%= @user.followers.count %></td>
         </tr>
         <% end %>
-        <!--추가 하고 싶은것은 팔로우수 팔로워수 그리고 그 팔로우수로 이동 할수있게 하는 것-->
+        <tr>
+          <th class="table-active w-25">作成したレビュー</th>
+          <td><%= link_to "一覧を見る", public_users_user_shoes_reviews_path(@user.id), class:"btn btn-outline-light" %></td>
+        </tr>
+        <tr>
+          <th class="table-active w-25">いいねしたレビュー</th>
+          <td><%= link_to "一覧を見る", public_users_favorites_path(@user.id), class:"btn btn-outline-light" %></td>
+        </tr>
       </table>
     </div>
   </div>
 </div>
-  <div class="row mt-3">
-    <div class="col-3">
-      <h3>作成したレビュー一覧</h3>
-    </div>
-    <div class="col">
-      <%= link_to "一覧を見る", public_users_user_shoes_reviews_path(@user.id), class:"btn btn-primary" %>
-    </div>
-  </div>
-  <div class="row my-2">
-    <div class="col-3">
-      <h3>いいねしたレビュー一覧</h3>
-    </div>
-    <div class="col">
-      <%= link_to "一覧を見る", public_users_favorites_path(@user.id), class:"btn btn-primary" %>
-    </div>
-  </div>
 
 </div>
