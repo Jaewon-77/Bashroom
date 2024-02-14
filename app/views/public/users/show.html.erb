@@ -98,11 +98,5 @@
 
 </div>
 
-<!--원래슈즈리뷰.유저아이디였음-->
-               <% if @user != current_user %>
-                  <% if current_user.following?(shoes_review.user) %>
-                    <%= link_to "フォロー外す", public_user_relationships_path(shoes_review.user), method: :delete %>
-                  <% else %>
-                    <%= link_to "フォローする", public_user_relationships_path(shoes_review.user), method: :post %>
-                  <% end %>
-                <% end %>
+
+              

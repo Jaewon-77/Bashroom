@@ -12,7 +12,7 @@
         <h2>新着レビュー</h2>
         <div class="row" >
           <% @shoes_reviews.first(4).each do |shoes_review| %>
-            <div class="col-md-3 col-sm-6" style="padding: 15px; margin-bottom: 5px; border: 5px double #660000;">
+            <div class="col-md-3 col-sm-6" style="padding: 15px; margin-bottom: 5px; border: 5px double #FF1A6F;">
               <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
                 <p class="card-text">
                   <%= link_to public_user_path(shoes_review.user.id)  do %>
