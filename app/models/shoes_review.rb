@@ -60,5 +60,4 @@ class ShoesReview < ApplicationRecord
 
 
 
-
 end
