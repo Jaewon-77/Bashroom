@@ -25,7 +25,7 @@ class Public::ShoesReviewsController < ApplicationController
      @shoes_reviews = ShoesReview.all
      @user = User.find(current_user.id)
      @tag_list = Tag.all
-     
+
   end
 
   def edit
