@@ -9,8 +9,16 @@
             <%= image_tag 'no_image', class: "rounded-circle", size: "40x40" %>
           <% end %>
         <% end %>
-        投稿者:<%=@user.nickname%>
-        </h2>
+        投稿者:<%=@user.nickname%></h2>
+        <% if @shoes_review.user != current_user %>
+          <h4 class="col-3" style="border: 5px double #FF1A6F;">
+            <% if current_user.following?(@shoes_review.user) %>
+              <%= link_to "フォロー外す", public_user_relationships_path(@shoes_review.user), method: :delete %>
+            <% else %>
+              <%= link_to "フォローする", public_user_relationships_path(@shoes_review.user), method: :post %>
+            <% end %>
+          <% end %>
+        </h4>
         <h3 class="col-4 text-center" style="border: 5px double #FF1A6F; margin-bottom: 10px;">BasketballShoes Photo
           <% if @shoes_review.image.attached? %>
             <%= image_tag @shoes_review.image, size: "250x250" %>
@@ -19,7 +27,7 @@
           <% end %>
         </h3>
         <h3 class="col-4" style="border: 5px double #FF1A6F;">BasketballShoes Score</h3>
-        <table class="table table-dark table-hover" style="border: 5px double #FF1A6F;">
+        <table class="table table-dark table-striped　table-bordered table-hover text-white text-center" style="border: 5px double #FF1A6F; background-color: black">
           <thead>
             <tr>
     　  　      <th scope="col">★</th>
