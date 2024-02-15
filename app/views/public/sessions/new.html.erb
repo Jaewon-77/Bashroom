@@ -1,29 +1,23 @@
 <div class="container">
   <div class="row my-3 offset-1 text-center">
-    <h2>ログイン</h2>
+    <h2 class="col-2" style="border: 5px double #FF1A6F;">ログイン</h2>
   </div>
-
-  <div class="row my-3 offset-1 text-center">
-    <h3>登録済みの方はこちらからログイン</h3>
-  </div>
-
-
-<%= form_with model: @user, url: new_user_session_path, local: true do |f| %>
-<form class="form-horizontal">
-  
-   <div class="form-group row my-3 offset-2">
-     <%= f.label :"メールアドレス",class:"col-sm-2 control-label" %><br />
-     <div class="col-sm-6">
-       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com",class:"form-control" %>
-     </div>
-   </div>
-
-  <div class="form-group row my-3 offset-2">
-    <%= f.label "パスワード",class:"col-sm-2 control-label" %><br />
-      <div class="col-sm-6">
+    <%= form_with model: @user, url: new_user_session_path, local: true do |f| %>
+      <form class="form-horizontal">
+        <div style="border: 5px double #FF1A6F;">
+        <div class="form-group row my-3 offset-2">
+          <%= f.label :"メールアドレス",class:"col-sm-2 control-label" %><br/>
+          <div class="col-sm-6">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com",class:"form-control" %>
+          </div>
+        </div>
+        <div class="form-group row my-3 offset-2">
+          <%= f.label "パスワード",class:"col-sm-2 control-label" %><br/>
+        <div class="col-sm-6">
          <%= f.password_field :password, autocomplete: "current-password",placeholder: "******",class:"form-control" %>
       </div>
   </div>
+  
   <div class="form-group row my-3 offset-2">
   <% if devise_mapping.rememberable? %>
     <div class="field">
@@ -32,13 +26,13 @@
     </div>
   <% end %>
   </div>
-  
+ 
   <div class="text-center my-5">
-    <%= f.submit "ログイン", class:"btn btn-primary" %>
+    <%= f.submit "ログイン", class:"btn btn-outline-danger" %>
   </div>
   
 <% end %>
-
+ </div>
 <div class="row my-3 offset-1 text-center">
     <div class="">
       <h3>会員登録がお済みでない方</h3>
