@@ -5,8 +5,9 @@ class Public::ShoesReviewsController < ApplicationController
 
   def create
      @shoes_review = ShoesReview.new(shoes_review_params)
-     @shoes_review.end_user_id = current_user.id
-     #@shoes_review.user_id = current_user.id원래는 이거
+     #@shoes_review.end_user_id = current_user.id
+     #@shoes_review.id = current_user.id
+     @shoes_review.user_id = current_user.id
      tag_list = params[:shoes_review][:name].split(',')#追加
      if @shoes_review.save
        @shoes_review.save_tags(tag_list)#追加
@@ -30,7 +31,7 @@ class Public::ShoesReviewsController < ApplicationController
 
   def edit
     @shoes_review = ShoesReview.find(params[:id])
-    @tag_list = @shoes_review.tags.pluck(:name).join(',')#
+    @tag_list = @shoes_review.tags.pluck(:name).join(',')
   end
 
   def show

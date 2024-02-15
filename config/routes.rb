@@ -15,8 +15,10 @@ devise_for :users,skip: [:passwords], controllers: {
   namespace :admin do
     get 'homes/top'
     resources :users, only: [:index, :show, :edit, :update]
-    get 'review_comments', to: "review_comments#index"
-    get 'review_shoes_reviews', to: "review_shoes_reviews#index"
+    #get 'review_comments', to: "review_comments#index"
+    #get 'review_shoes_reviews', to: "review_shoes_reviews#index"
+    resources :review_comments, only: [:index, :destroy]
+    resources :review_shoes_reviews, only: [:index, :destroy]
   end
 
   namespace :public do
@@ -54,7 +56,7 @@ devise_for :users,skip: [:passwords], controllers: {
   end
 
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  devise_scope :user do 
+  devise_scope :user do
     post "users/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
 
