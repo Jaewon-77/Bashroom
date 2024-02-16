@@ -1,35 +1,45 @@
-<div class="container mt-5">
-  <h3>ユーザーレビュー一覧</h3>
-  <table class="table mt-3">
-    <tr>
-      <th class="col-2">名前</th>
-      <th class="col-2">ニックネーム</th>
-      <th class="col-1">写真</th>
-      <th class="col-8">レビュータイトル</th>
-      <th class="col-1">作成日</th>
-      <th class="col-1"></th>
-    </tr>
-    <% @shoes_reviews.each do |shoes_review| %>
-    <tr>
-      <td class="col-2">
-        <%= link_to admin_user_path(shoes_review.user) do %>
-          <%= @users.find(shoes_review.user_id).first_name %><%= @users.find(shoes_review.user_id).last_name %>
-        <% end %>
-      </td>
-    <td class="col-2"><%= shoes_review.user.nickname %></td>
-    <td class="col-1">
-      <% if shoes_review.image.attached? %>
-        <%= image_tag shoes_review.image, size: "100x100" %>
-      <% else %>
-        <%= image_tag 'no_image', size: "100x100" %>
-      <% end %>
-    </td>
-    <td class="col-8"><%= shoes_review.title %></td>
-    <td class="col-1"><%= shoes_review.created_at.strftime('%Y/%m/%d') %></td>
-    <td class="col-1">
-      <%= link_to '削除', admin_review_shoes_review_path(shoes_review), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-sm btn-danger" %>
-    </td>
-  </tr>
-  <% end %>
-  </table>
+<div class="container">
+  <div class="row my-3">
+    <div class="col-5 px-sm-0 offset-sm-1 text-center">
+      <h2 style="border: 5px double #FF1A6F;">User BasketballShoes Review 一覧</h2>
+    </div>
+    <div class="col-12" style="padding: 15px; margin-top: 30px; margin-bottom: 30px; border: 5px double #FF1A6F;">
+      <table class="table table-dark table-striped　table-bordered table-hover text-white text-center" style="background-color: black">
+        <thead class="table-active text-center">
+          <tr>
+            <th>名前</th>
+            <th>ニックネーム</th>
+            <th>写真</th>
+            <th>レビュータイトル</th>
+            <th>作成日</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @shoes_reviews.each do |shoes_review| %>
+            <tr>
+              <td>
+                <%= link_to admin_user_path(shoes_review.user) do %>
+                  <%= @users.find(shoes_review.user_id).first_name %><%= @users.find(shoes_review.user_id).last_name %>
+                <% end %>
+              </td>
+              <td><%= shoes_review.user.nickname %></td>
+              <td>
+                <% if shoes_review.image.attached? %>
+                  <%= image_tag shoes_review.image, size: "100x100" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "100x100" %>
+                <% end %>
+              </td>
+              <td><%= shoes_review.title %></td>
+              <td><%= shoes_review.created_at.strftime('%Y/%m/%d') %></td>
+              <td>
+                <%= link_to '削除', admin_review_shoes_review_path(shoes_review), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-outline-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
