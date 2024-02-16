@@ -22,7 +22,7 @@
                       <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
                     <% end %>
                   <% end %>
-                    Nickname:<%= shoes_review.user.nickname %>
+                  Nickname:<%= shoes_review.user.nickname %>
                 </p>
                 <%= link_to public_shoes_review_path(shoes_review) do %>
                   <% if shoes_review.image.attached? %>
