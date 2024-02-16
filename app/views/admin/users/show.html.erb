@@ -1,66 +1,79 @@
 <div class="container">
-  <div class="row">
-    <div class="row my-3 offset-1 text-center">
-      <h2><%= @user.last_name_kana %><%= @user.first_name_kana %>さんの会員詳細 </h2>
+  <div class="row mt-3 mb-3 offset-1 text-center">
+    <div class="col-12">
+      <h2 style="font-family: 'Sacramento', cursive;"><%= @user.last_name_kana %><%= @user.first_name_kana %>さんの会員詳細 </h2>
     </div>
-    <table class="table">
-      <tr>
-        <td>会員ID</td>
-        <td><%= @user.id %></td>
-      </tr>
-      <tr>
-        <td>氏名</td>
-        <td><%= @user.first_name_kana %><%= @user.last_name_kana %></td>
-      </tr>
-      <tr>
-        <td>フリガナ</td>
-        <td><%= @user.first_name_kana %><%= @user.last_name_kana %></td>
-      </tr>
-      <tr>
-        <td>年齢</td>
-        <td><%= @user.age %></td>
-      </tr>
-      <tr>
-        <td>ニックネーム</td>
-        <td><%= @user.nickname %></td>
-      </tr>
-      <tr>
-        <td>メールアドレス</td>
-        <td><%= @user.email %></td>
-      </tr>
-      <tr>
-        <td>住所</td>
-        <td><%= @user.address %></td>
-      </tr>
-      <tr>
-        <td>好きなブランド</td>
-        <td><%= @user.favorite_brand %></td>
-      </tr>
-      <tr>
-        <td>好きなバスケットボールシューズ</td>
-        <td><%= @user.favorite_shoes_name %></td>
-      </tr>
-      <tr>
-        <td>バスケットボールシューズサイズ</td>
-        <td><%= @user.size %></td>
-      </tr>
-            <tr>
-        <td>会員ステータス </td>
-        <td>
-          <% if @user.is_active? %>
-            <p class="text-success">有効</p>
-          <% else %>
-            <p class="text-danger">退会済</p>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>
-          <%= link_to "編集する", edit_admin_user_path(@user),class:"btn btn-success my-1 mx-4 px-4" %>
-          <%= link_to "トップページへ", admin_homes_top_path,class:"btn btn-primary mx-4 px-4" %>
-        </td>
-      </tr>
-    </table>
+    <div class="col-12">
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image, class: "rounded-circle", size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %>
+      <% end %>
+    </div>
+    <div class="col-12">
+      <h5>Profile Photo</h5>
+    </div>
+    <div class="col-12">
+      <div style="padding: 15px; margin-bottom: 10px; border: 5px double #FF1A6F; margin-top: 10px;">
+        <table class="table table-dark table-striped　table-bordered table-hover text-white" style="background-color: black">
+          <tr>
+            <td>会員ID</td>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+            <td>氏名</td>
+            <td><%= @user.first_name_kana %><%= @user.last_name_kana %></td>
+          </tr>
+          <tr>
+            <td>フリガナ</td>
+            <td><%= @user.first_name_kana %><%= @user.last_name_kana %></td>
+          </tr>
+          <tr>
+            <td>年齢</td>
+            <td><%= @user.age %></td>
+          </tr>
+          <tr>
+            <td>ニックネーム</td>
+            <td><%= @user.nickname %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= @user.address %></td>
+          </tr>
+          <tr>
+            <td>好きなブランド</td>
+            <td><%= @user.favorite_brand %></td>
+          </tr>
+          <tr>
+            <td>好きなバスケットボールシューズ</td>
+            <td><%= @user.favorite_shoes_name %></td>
+          </tr>
+          <tr>
+            <td>バスケットボールシューズサイズ</td>
+            <td><%= @user.size %></td>
+          </tr>
+          <tr>
+            <td>会員ステータス </td>
+            <td>
+              <% if @user.is_active? %>
+                <p class="text-success">有効</p>
+              <% else %>
+                <p class="text-danger">退会済</p>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-right mb-3">
+      <%= link_to "編集する", edit_admin_user_path(@user),class:"btn btn-outline-success my-1 mx-4 px-4" %>
+      <%= link_to "トップページへ", admin_homes_top_path,class:"btn btn-outline-warning mx-4 px-4" %>
+    </div>
   </div>
 </div>
