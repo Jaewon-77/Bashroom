@@ -1,30 +1,39 @@
-<h1>Follower Users</h1>
-<table class="table">
-  <thead>
-    <th>image</th>
-    <th>name</th>
-    <th colspan="3"></th>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td>
-          <% if user.image.attached? %>
-            <%= image_tag user.image, class: "rounded-circle", size: "200x200" %>
-          <% else %>
-            <%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %>
-          <% end %>
-        </td>
-        <td><%= user.nickname %></td>
-        <td>
-          <p>フォロワー数：<%= user.followers.count %></p>
-        </td>
-        <td>
-        <p>フォロー数：<%= user.followings.count %></p>
-        </td>
-        <td></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to "戻る", :back %>
+<div class="container">
+  <div class="row">
+    <div class="col mt-4">
+      <h2 class="text-center mb-4" style="font-weight:bold; color:#FF1A6F; font-family: Rounded M+ 1c;">Follower Users</h2>
+      <div style="padding: 15px; margin-bottom: 30px; border: 5px double #FF1A6F; font-family: 'Sacramento', cursive;">
+        <table class="table table-dark table-striped　table-bordered table-hover text-white" style="background-color: black">
+          <thead>
+            <th>Profile Photo</th>
+            <th>Nickname</th>
+            <th>フォロワー数</th>
+            <th>フォロー数</th>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <% if user.image.attached? %>
+                    <%= image_tag user.image, class: "rounded-circle", size: "50x50" %>
+                  <% else %>
+                    <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
+                  <% end %>
+                </td>
+                <td><%= user.nickname %></td>
+                <td>
+                  <p><%= user.followers.count %></p>
+                </td>
+                <td>
+                  <p><%= user.followings.count %></p>
+                </td>
+                <td></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <%= link_to "戻る", :back, class:"btn btn-outline-warning"%>
+</div>
