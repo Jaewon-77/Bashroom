@@ -111,7 +111,7 @@
             <% else %>
               <%= image_tag 'no_image', class: "rounded-circle", size: "30x30" %>
             <% end %>
-            <%= comment.user.nickname %>
+            Nickname: <%= comment.user.nickname %>
             <%= comment.created_at.strftime('%Y/%m/%d') %><br>
             <%= comment.user_comment %><br>
             <div class="row">
