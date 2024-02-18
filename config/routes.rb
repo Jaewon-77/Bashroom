@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+root to: 'public/homes#top'
   # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -30,6 +32,11 @@ devise_for :users,skip: [:passwords], controllers: {
     get 'homes/top'
     get 'homes/about'
 
+    get "users/information/edit", to: "users#edit"
+    patch "users/information", to: "users#update"
+    get 'users/unsubscribe', to: "users#unsubscribe"
+    patch 'users/withdraw', to: "users#withdraw"
+
     resources :users, only: [:show] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
@@ -40,10 +47,7 @@ devise_for :users,skip: [:passwords], controllers: {
     end
 
     #get "users/:id/mypage", to: "users#show", as: 'users_mypage'
-    get "users/information/edit", to: "users#edit"
-    patch "users/information", to: "users#update"
-    get 'users/unsubscribe', to: "users#unsubscribe"
-    patch 'users/withdraw', to: "users#withdraw"
+
     get '/users/:id/favorites', to: 'users#favorites', as: 'users_favorites'
     get '/users/:id/user_shoes_reviews', to: 'users#user_shoes_reviews', as: 'users_user_shoes_reviews'
 
