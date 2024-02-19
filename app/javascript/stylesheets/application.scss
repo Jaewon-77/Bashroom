@@ -1,1 +1,89 @@
 @use '~bootstrap/scss/bootstrap';
+
+.review-path {
+  text-decoration: none !important;
+}
+
+.btn-a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #FFABCE;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 1s all;
+    text-decoration: none !important;
+}
+
+
+.btn-a svg {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    height: 20px;
+    fill: #353535;
+    transition: .5s all;
+    opacity: 0;
+}
+
+.btn-a span {
+    color: #111111;
+    text-align: center;
+    z-index: 1;
+}
+
+.btn-a:hover span {
+    animation: textAnime 1s linear forwards;
+}
+
+.btn-a:hover svg {
+    animation: iconAnime 1s 0.7s linear forwards;
+}
+
+@keyframes textAnime {
+    0% {
+        transform: scaleX(1);
+    }
+
+    50% {
+        font-weight: bold;
+        transform: scaleX(1.3);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleX(0.3);
+        opacity: 0;
+    }
+
+}
+
+@keyframes iconAnime {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        transform: rotate(-50deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-50deg);
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
