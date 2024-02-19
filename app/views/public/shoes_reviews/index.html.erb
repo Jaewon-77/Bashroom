@@ -39,7 +39,7 @@
                 <% end %>
               </td>
               <td>
-                <%= link_to public_user_path(shoes_review.user.id) do %>
+                <%= link_to public_user_path(shoes_review.user.id), class: "review-path" do %>
               　　  <% if shoes_review.user.image.attached? %>
             　　      <%= image_tag shoes_review.user.image, class: "rounded-circle", size: "50x50" %>
           　　      <% else %>
@@ -48,7 +48,7 @@
                 <% end %>
               </td>
               <td>
-                <%= link_to public_shoes_review_path(shoes_review.id) do %>
+                <%= link_to public_shoes_review_path(shoes_review.id), class: "review-path" do %>
                   <% if shoes_review.image.attached? %>
                     <%= image_tag shoes_review.image, size: "50x50" %>
                   <% else %>
