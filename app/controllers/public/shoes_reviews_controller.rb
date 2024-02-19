@@ -54,9 +54,10 @@ class Public::ShoesReviewsController < ApplicationController
     tag_list=params[:shoes_review][:name].split(',')#
     if @shoes_review.update(shoes_review_params)
       @shoes_review.save_tags(tag_list)
-      flash[:notice] = "successfully"
+      flash[:notice] = "変更内容を保存しました。"
       redirect_to public_shoes_review_path(@shoes_review.id)
     else
+      flash[:notice] = "変更内容を保存できませんでした。"
       render :edit
     end
   end

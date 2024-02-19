@@ -7,7 +7,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to public_homes_top_path, notice: "guestuserでログインしました。"
+    redirect_to public_homes_top_path, notice: "guestuser login sucessfully"
   end
 
   # GET /resource/sign_in

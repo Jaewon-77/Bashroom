@@ -35,21 +35,25 @@
             <tr>
               <td>
                 <%= link_to public_user_path(shoes_review.user.id) do %>
-                <%= shoes_review.user.nickname %>
+                  <%= shoes_review.user.nickname %>
                 <% end %>
               </td>
               <td>
-                <% if shoes_review.user.image.attached? %>
-                  <%= image_tag shoes_review.user.image, class: "rounded-circle", size: "50x50" %>
-                <% else %>
-                  <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
+                <%= link_to public_user_path(shoes_review.user.id) do %>
+              　　  <% if shoes_review.user.image.attached? %>
+            　　      <%= image_tag shoes_review.user.image, class: "rounded-circle", size: "50x50" %>
+          　　      <% else %>
+         　　         <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
+         　　       <% end %>
                 <% end %>
               </td>
               <td>
-                <% if shoes_review.image.attached? %>
-                  <%= image_tag shoes_review.image, size: "50x50" %>
-                <% else %>
-                  <%= image_tag 'no_image', size: "50x50" %>
+                <%= link_to public_shoes_review_path(shoes_review.id) do %>
+                  <% if shoes_review.image.attached? %>
+                    <%= image_tag shoes_review.image, size: "50x50" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "50x50" %>
+                  <% end %>
                 <% end %>
               </td>
               <td>
