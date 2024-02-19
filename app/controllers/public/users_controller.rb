@@ -13,8 +13,10 @@ class Public::UsersController < ApplicationController
   def update
     user = User.find(current_user.id)
     if user.update(user_params)
-      redirect_to public_user_path(user.id), notice: "変更内容を保存しました。"
+      flash[:notice] = "変更内容を保存しました。"
+      redirect_to public_user_path(user.id)
     else
+      flash[:notice] = "変更内容を保存できませんでした。"
       render :edit
     end
   end
@@ -26,7 +28,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(current_user.id)
     @user.update(is_active: false)
     reset_session
-    redirect_to public_top_path, notice: "退会処理を実行いたしました。"
+    redirect_to public_top_path, notice: "退会処理を実行致しました。"
   end
    #いいねした投稿文一覧機能
   def favorites
