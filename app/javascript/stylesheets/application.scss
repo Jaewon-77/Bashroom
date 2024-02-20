@@ -86,7 +86,7 @@
     }
 
 }
-
+// トップページの新規レビュー
 .pic-container {
     width: 100vw;
     height: 100vh;
@@ -176,7 +176,7 @@
     background-color: #fff;
     color: #333;
 }
-
+// ネオンボタン
 .btn-b{
     position: relative;
     display: inline-block;
@@ -189,6 +189,7 @@
     letter-spacing: 4px;
     overflow: hidden;
     margin-right: 50px;
+    text-decoration: none !important;
 }
 
 .btn-b:hover{
@@ -279,9 +280,53 @@
         bottom: 100%;
     }
 }
+// 削除ボタン
+.btn-d {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #800000;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 1s all;
+    text-decoration: none !important;
+}
 
-:root {
-    --background-img: url('https://pa-tu.work/storage/img/posts/64e81123caca0.jpg');
+
+.btn-d svg {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    height: 20px;
+    fill: #FFFFEE;
+    transition: .5s all;
+    opacity: 0;
+}
+
+.btn-d span {
+    color: #FFFFEE;
+    text-align: center;
+    z-index: 1;
+}
+
+.btn-d:hover span {
+    animation: textAnime 1s linear forwards;
+}
+
+.btn-d:hover svg {
+    animation: iconAnime 1s 0.7s linear forwards;
+}
+
+
+// トップページのメイン写真
+.topphoto {
+    background-image: url("../images/top-photo.png");
 }
 
 .container-b {
@@ -305,8 +350,6 @@
     animation: containerAnime 1.5s 1s forwards ease-in-out;
 }
 
-
-
 .box {
     display: grid;
     place-content: center;
@@ -322,7 +365,7 @@
 
 .box-title {
     margin: 0;
-    color: #fff;
+    color: #FFFF22;
     font-size: 22px;
     font-weight: bold;
     font-family: serif;
@@ -340,3 +383,4 @@
         filter: brightness(.5) blur(2px);
     }
 }
+
