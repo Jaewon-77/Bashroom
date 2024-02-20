@@ -1,7 +1,16 @@
 <div class="container">
   <div class="row my-3">
     <div class="col-md-12 my-3 text-center">
-      <h1>Welcome!!!</h1>
+    
+    <!--위에 컨테너와 로우를 밑으로 합쳐서 하면 될듯 그리고 사진을 어떻게 불러와와하는지 알면 됨-->
+      <div class="container-b">
+      <div class="box">
+        <h1 class="box-title">Welcome!!!<br></h1>
+        <h2 class="box-title">ようこそ、Bashroom！このサイトは、バスケットボールシューズレビューサイトになります。<br>
+              会員ではない方はバスケットボールレビューの閲覧、コメントはできません。<br></h2>
+      </div>
+      </div>
+      <!--<h1>Welcome!!!</h1>-->
       <div class"mx-auto">
           <p>ようこそ、Bashroom！<br>
               このサイトは、バスケットボールシューズレビューサイトになります。<br>
@@ -12,36 +21,54 @@
         <h2>新着レビュー</h2>
         <div class="row" >
           <% @shoes_reviews.first(4).each do |shoes_review| %>
-            <div class="col-md-3 col-sm-6" style="padding: 15px; margin-bottom: 5px; border: 5px double #FF1A6F;">
+            <div class="wrapper col-md-3 col-sm-6"style="padding: 15px; margin-bottom: 5px; border: 5px double #FF1A6F;">
               <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
-                
-                <p class="card-text">
-                  <%= link_to public_user_path(shoes_review.user.id), class: "review-path" do %>
-                    <% if shoes_review.user.image.attached? %>
-                      <%= image_tag shoes_review.user.image, class: "rounded-circle", size: "50x50" %>
-                    <% else %>
-                      <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
-                    <% end %>
-                  <% end %>
-                  Nickname:<%= shoes_review.user.nickname %>
-                </p>
-                <%= link_to public_shoes_review_path(shoes_review) do %>
+                <div class="card-front">
                   <% if shoes_review.image.attached? %>
                     <%= image_tag shoes_review.image, size: "200x200" %>
                   <% else %>
                     <%= image_tag 'no_image', size: "200x200" %>
                   <% end %>
-                <% end %>
-                
-                <div class="card-body">
-                  <p class="card-text">Review Title:<%= shoes_review.title %></p>
+                </div>
+                <div class="card-back">
+                  <h2 class="card-title">
+                    <% if shoes_review.user.image.attached? %>
+                      <%= image_tag shoes_review.user.image, class: "rounded-circle", size: "50x50" %>
+                    <% else %>
+                      <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
+                    <% end %>
+                    Nickname<br><%= shoes_review.user.nickname %>
+                  </h2>
+                  <div class="card-description">
+                    <p>Review Title<br><%= shoes_review.title %></p>
+                  </div>
+                  <% if user_signed_in? %><!--ログインした時ー-->
+                  <%= link_to "詳細", public_shoes_review_path(shoes_review), class:"card-link"  %>
+                  <% else %><!--ログインしてないー-->
+                  <%= link_to "詳細", new_user_session_path, class:"card-link"  %>
+                  <% end %>
                 </div>
               </div>
             </div>
           <% end %>
         </div>
-        <div  style="margin-top: 10px;">
-          <%= link_to "全てのレビューを見る", public_shoes_reviews_path, class:"btn btn-outline-danger" %>
+      <div  style="margin-top: 10px;">
+        <% if user_signed_in? %><!--ログインした時ー-->
+      　<%= link_to public_shoes_reviews_path, class:"btn-b" do %>全てのレビューを見る
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <% end %>
+        <% else %><!--ログインしてないー-->
+        <%= link_to new_user_session_path, class:"btn-b" do %>全てのレビューを見る
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <% end %>
+        <% end %>
+          
         </div>
       </div>
     </div>
