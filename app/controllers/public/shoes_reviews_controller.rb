@@ -23,7 +23,8 @@ class Public::ShoesReviewsController < ApplicationController
   end
 
   def index
-     @shoes_reviews = ShoesReview.all
+     @shoes_reviews = ShoesReview.page(params[:page])
+     #@shoes_reviews = ShoesReview.all
      @user = User.find(current_user.id)
      @tag_list = Tag.all
 
