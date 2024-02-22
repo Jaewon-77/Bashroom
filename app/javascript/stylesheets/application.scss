@@ -336,7 +336,7 @@
     background-color: #f9f9f9;
     color: #f9f9f9;
     overflow-y: scroll;
-    font-size: 23px;
+
 }
 
 .box-scroll::-webkit-scrollbar {
@@ -385,62 +385,213 @@
 }
 
 // トップページのメイン写真
-.topphoto {
-    background-image: url("../images/james.jpg");
-    background-repeat: no-repeat;
-}
 
-.container-b {
-    display: grid;
-    place-content: center;
+.hover_effect_box {
+    width: 1140px;
+    height: 735px;
+    margin: 10px;
+    border: 10px solid #f3f3f3;
+    overflow: hidden;
     position: relative;
-    width: 100vw;
-    height: 75vh;
-    background-image: var(--background-img);
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-}
+    text-align: center;
+    -webkit-box-shadow: 1px 1px 2px #e6e6e6;
+    -moz-box-shadow: 1px 1px 2px #e6e6e6;
+    box-shadow: 1px 1px 2px #e6e6e6;
+    cursor: default;
+    background: #fff;
+    box-sizing: initial;
+ }
+ .hover_effect_box * {
+    box-sizing: initial;
+ }
 
-.container-b::before {
+ .hover_effect_box .caption
+ , .hover_effect_box .mask  {
+    width: 1140px;
+    height: 735px;
     position: absolute;
-    inset: 0;
-    background: inherit;
-    content: '';
-    z-index: -1;
-    animation: containerAnime 1.5s 1s forwards ease-in-out;
-}
+    overflow: hidden;
+    top: 0;
+    left: 0;
+ }
+ .hover_effect_box .content_bg {
+    display: block;
+    position: relative;
+ }
+ .hover_effect_box .caption_title {
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    font-size: 30px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    margin: 20px 0 0 0;
+ }
+ .hover_effect_box .caption_desc {
+    font-size: 1.9em;
+    line-height: 1.5;
+    position: relative;
+    color: #fff;
+    padding: 30px 20px 40px;
+    text-align: center;
+ }
+ .hover_effect_box .caption_link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 14px;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    -webkit-box-shadow: 0 0 1px #000;
+    -moz-box-shadow: 0 0 1px #000;
+    box-shadow: 0 0 1px #000;
+ }
+ .hover_effect_box .caption_link:hover {
+    -webkit-box-shadow: 0 0 5px #000;
+    -moz-box-shadow: 0 0 5px #000;
+    box-shadow: 0 0 5px #000;
+ }
 
-.box {
-    display: grid;
-    place-content: center;
-    width: 400px;
-    height: 200px;
-    box-shadow: none;
-    background-image: linear-gradient(rgba(0, 0, 0, .3) 0 100%), var(--background-img);
-    background-position: center;
-    background-size: cover;
-    animation: boxAnime 1.5s 2s forwards ease-in;
+ .hover_effect_1 .content_bg {
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+ }
+.hover_effect_3 .content_bg {
+    -webkit-transition: all 0.4s ease-in-out 0.5s;
+    -moz-transition: all 0.4s ease-in-out 0.5s;
+    -o-transition: all 0.4s ease-in-out 0.5s;
+    -ms-transition: all 0.4s ease-in-out 0.5s;
+    transition: all 0.4s ease-in-out 0.5s;
+ }
+ .hover_effect_3 .caption {
+    background-color: rgba(146,96,91,0.5);
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
     opacity: 0;
-}
+    -webkit-transition: all 0.3s ease-in 0.4s;
+    -moz-transition: all 0.3s ease-in 0.4s;
+    -o-transition: all 0.3s ease-in 0.4s;
+    -ms-transition: all 0.3s ease-in 0.4s;
+    transition: all 0.3s ease-in 0.4s;
+ }
+ .hover_effect_3 .caption_title {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    background: transparent;
+    margin: 20px 40px 0px 40px;
+    -webkit-transform: scale(10);
+    -moz-transform: scale(10);
+    -o-transform: scale(10);
+    -ms-transform: scale(10);
+    transform: scale(10);
+    -webkit-transition: all 0.3s ease-in-out 0.1s;
+    -moz-transition: all 0.3s ease-in-out 0.1s;
+    -o-transition: all 0.3s ease-in-out 0.1s;
+    -ms-transition: all 0.3s ease-in-out 0.1s;
+    transition: all 0.3s ease-in-out 0.1s;
+ }
+ .hover_effect_3 .caption_desc {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transform: scale(10);
+    -moz-transform: scale(10);
+    -o-transform: scale(10);
+    -ms-transform: scale(10);
+    transform: scale(10);
+    -webkit-transition: all 0.3s ease-in-out 0.2s;
+    -moz-transition: all 0.3s ease-in-out 0.2s;
+    -o-transition: all 0.3s ease-in-out 0.2s;
+    -ms-transition: all 0.3s ease-in-out 0.2s;
+    transition: all 0.3s ease-in-out 0.2s;
+    padding: 20px 20px 30px;
+ }
+ .hover_effect_3 .caption_link {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transform: translateY(100px);
+    -moz-transform: translateY(100px);
+    -o-transform: translateY(100px);
+    -ms-transform: translateY(100px);
+    transform: translateY(100px);
+    -webkit-transition: all 0.3s ease-in-out 0.1s;
+    -moz-transition: all 0.3s ease-in-out 0.1s;
+    -o-transition: all 0.3s ease-in-out 0.1s;
+    -ms-transition: all 0.3s ease-in-out 0.1s;
+    transition: all 0.3s ease-in-out 0.1s;
+ }
+ .hover_effect_3:hover .caption {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    -ms-transition-delay: 0s;
+    transition-delay: 0s;
+ }
+ .hover_effect_3:hover .content_bg {
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    -ms-transition-delay: 0s;
+    transition-delay: 0s;
+ }
+ .hover_effect_3:hover .caption_title {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition-delay: 0.1s;
+    -moz-transition-delay: 0.1s;
+    -o-transition-delay: 0.1s;
+    -ms-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+    margin-top: 200px;
+ }
+ .hover_effect_3:hover .caption_desc {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition-delay: 0.2s;
+    -moz-transition-delay: 0.2s;
+    -o-transition-delay: 0.2s;
+    -ms-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+ }
+ .hover_effect_3:hover .caption_link {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition-delay: 0.3s;
+    -moz-transition-delay: 0.3s;
+    -o-transition-delay: 0.3s;
+    -ms-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+ }
 
-.box-title {
-    margin: 0;
-    color: #FFFF22;
-    font-size: 22px;
-    font-weight: bold;
-    font-family: serif;
-}
-
-@keyframes boxAnime {
-    to {
-        box-shadow: 0px 0px 10px #545454;
-        opacity: 1;
-    }
-}
-
-@keyframes containerAnime {
-    to {
-        filter: brightness(.5) blur(2px);
-    }
+.content_img {
+    width: 1140px;
+    height: 735px;
 }
