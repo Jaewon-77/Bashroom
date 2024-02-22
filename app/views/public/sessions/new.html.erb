@@ -6,13 +6,13 @@
     <form class="form-horizontal">
       <div style="border: 5px double #FF1A6F; margin-bottom: 30px;">
         <div class="form-group row my-3 offset-2">
-          <%= f.label :"メールアドレス",class:"col-sm-2 control-label" %><br/>
+          <%= f.label :"E-mail",class:"col-sm-2 control-label" %><br/>
           <div class="col-sm-6">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com",class:"form-control" %>
           </div>
         </div>
         <div class="form-group row my-3 offset-2">
-          <%= f.label "パスワード",class:"col-sm-2 control-label" %><br/>
+          <%= f.label "Password",class:"col-sm-2 control-label" %><br/>
           <div class="col-sm-6">
             <%= f.password_field :password, autocomplete: "current-password",placeholder: "******",class:"form-control" %>
           </div>
@@ -26,8 +26,8 @@
           <% end %>
         </div>
         <div class="text-center my-5">
-          <%= f.submit "ログイン", class:"btn btn-outline-success" %>
-          <%= link_to "新規登録", new_user_registration_path, class:"btn btn-outline-warning"%>
+          <%= f.submit "Login", class:"btn btn-outline-success" %>
+          <%= link_to "Sign up", new_user_registration_path, class:"btn btn-outline-warning"%>
         </div>
       </div>
     </form>

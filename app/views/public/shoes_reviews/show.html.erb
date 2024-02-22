@@ -75,7 +75,7 @@
     </svg>
     <span>Edit Review</span>
               <% end %>
-              
+
             </div>
             <div class="col-6" style="border: 5px double #FF1A6F; padding-top: 10px; padding-bottom: 10px;">
               <%= link_to public_shoes_review_path(@shoes_review.id), method: :delete, "data-confirm" => "本当に削除しますか？" , class: "btn-d" do  %>
@@ -84,27 +84,15 @@
     </svg>
     <span>Delete Review</span>
               <% end %>
-              
+
             </div>
           <% end %>
         </div>
       </div>
     </div>
-    <% if @shoes_review.favorited_by?(current_user) %>
-      <p>
-        <%= link_to public_shoes_review_favorite_path(@shoes_review), method: :delete do %>
-          ♥
-          <%= @shoes_review.favorites.count %>
-        <% end %>
-      </p>
-    <% else %>
-      <p>
-        <%= link_to public_shoes_review_favorite_path(@shoes_review), method: :post do %>
-          ♡
-          <%= @shoes_review.favorites.count %>
-        <% end %>
-      </p>
-    <% end %>
+    <div id="favorite_buttons_<%= @shoes_review.id %>">
+    <%= render "public/favorites/favorite", shoes_review: @shoes_review %></div>
+
     <div class="col-12" style="border: 5px double #FF1A6F; font-size: 30px;"><%= @shoes_review.review %></div>
     <div class="row">
       <div class="col-8 mt-2" style="border: 5px double #FF1A6F; padding-top: 10px; padding-bottom: 10px; margin-left: 15px;">
@@ -145,15 +133,15 @@
   </div>
   <div class="row">
     <div class="col-2" style="padding-bottom: 10px;">
-      
-      
+
+
       <%= link_to public_shoes_reviews_path, class:"btn-b" do %>BasketballShoes Review一覧
         <span></span>
         <span></span>
         <span></span>
         <span></span>
         <% end %>
-      
+
     </div>
   </div>
 </div>

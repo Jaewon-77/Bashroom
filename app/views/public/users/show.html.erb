@@ -16,6 +16,9 @@
   </div>
   <div class="row mt-3">
     <div class="col-2 text-right" style="margin-bottom: 20px;">
+      <% if @user.email != "guest@example.com" %>
+  
+
       <% if @user.id == current_user.id %>
         <a href="/public/users/information/edit" class="btn-a">
           <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -23,6 +26,7 @@
           </svg>
           <span>Profile Edit</span>
         </a>
+      <% end %>
       <% end %>
       <!--プロフィル編集別ボタン-->
       <%# if @user.id == current_user.id %>
