@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
-  #before_action :authenticate_customer!
-
+  before_action :authenticate_user!
+  
   def show
     @user = User.find(params[:id])
     @shoes_reviews = @user.shoes_reviews
@@ -28,7 +28,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(current_user.id)
     @user.update(is_active: false)
     reset_session
-    redirect_to public_top_path, notice: "退会処理を実行致しました。"
+    redirect_to public_homes_top_path, notice: "退会処理を実行致しました。"
   end
    #いいねした投稿文一覧機能
   def favorites
@@ -45,6 +45,7 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :nickname, :address, :favorite_brand, :email, :favorite_shoes_name, :size, :age, :image)
   end
-
+  
+  
 
 end

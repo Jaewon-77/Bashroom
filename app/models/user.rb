@@ -70,14 +70,8 @@ GUEST_USER_EMAIL = "guest@example.com"
       "退会"
     end
   end
-  #フルネーム
-  # def full_name
-  #   last_name + " " + first_name
-  # end
-
-  # def full_name_kana
-  #   last_name_kana + " " + first_name_kana
-  # end
+  
+  
 
 
 

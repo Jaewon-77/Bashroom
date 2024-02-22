@@ -3,6 +3,12 @@
 .review-path {
   text-decoration: none !important;
 }
+
+.no-decoration {
+  text-decoration: none !important;
+  color: white !important;
+}
+
 // 編集ボタン
 .btn-a {
     position: relative;
@@ -380,7 +386,7 @@
 
 // トップページのメイン写真
 .topphoto {
-    background-image: url("../images/top-photo.png");
+    background-image: url("../images/james.jpg");
     background-repeat: no-repeat;
 }
 

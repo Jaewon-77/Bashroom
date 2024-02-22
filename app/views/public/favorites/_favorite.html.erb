@@ -1,0 +1,15 @@
+<% if shoes_review.favorited_by?(current_user) %>
+  <p>
+  <%= link_to public_shoes_review_favorite_path(shoes_review), method: :delete, remote: true do %>
+    ♥
+    <%= shoes_review.favorites.count %>
+  <% end %>
+  </p>
+  <% else %>
+  <p>
+  <%= link_to public_shoes_review_favorite_path(shoes_review), method: :post, remote: true do %>
+    ♡
+    <%= shoes_review.favorites.count %>
+  <% end %>
+  </p>
+<% end %>

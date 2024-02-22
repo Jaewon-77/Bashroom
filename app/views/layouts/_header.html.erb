@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: black;">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: black; ">
     <% if admin_signed_in? %><!--管理者ログイン時ー-->
       <a class="navbar-brand mx-5 img-thumbnail" href="/admin/homes/top"><%= image_tag "logo1.PNG", :size => "135x135" %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,22 +9,22 @@
         <ul class="nav ml-auto mx-5">
           <li class="nav-item mx-3">
             <%= link_to admin_users_path do %>
-              <i class="fa-solid text-dark fa-users">会員一覧</i>
+              <i class="fa-solid fa-address-card">Users</i>
             <% end %>
           </li>
           <li class="nav-item mx-3">
             <%= link_to admin_review_shoes_reviews_path do %>
-              <i class="fa-solid text-dark fa-users">レビュー一覧</i>
+              <i class="fa-solid fa-book-open">Shoes Reviews</i>
             <% end %>
           </li>
           <li class="nav-item mx-3">
             <%= link_to admin_review_comments_path do %>
-              <i class="fa-solid text-dark fa-users">コメント一覧</i>
+              <i class="fa-solid fa-comment-slash">Comments</i>
             <% end %>
           </li>
           <li class="nav-item ml-3">
             <%= link_to destroy_admin_session_path, method: :delete do %>
-              <i class="fa-solid text-dark fa-user">ログアウト</i>
+              <i class="fa-solid fa-power-off">Logout</i>
             <% end %>
           </li>
         </ul>
