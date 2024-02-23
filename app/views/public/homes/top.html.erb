@@ -1,25 +1,20 @@
 <div class="container">
   <div class="row my-3">
     <div class="my-3 text-center">
-
-<div class="hover_effect_box hover_effect_3">
-  <div class="content_bg">
-   <%= image_tag "james3.jpg", class: "content_img" %>
-  </div>
-  <div class="caption">
-    <div class="caption_title">Welcome!!!</div>
-    <div class="caption_desc">
-      ようこそ、Bashroom！このサイトは、バスケットボールシューズレビュー<br>
-      サイトになります。会員ではない方は<br>
-      バスケットボールレビューの閲覧、コメントはできません。
-    </div>
-    <%= link_to public_homes_about_path, class:"caption_link" do %>About Page<% end %>
-  </div>
-</div>
-
-
-
-      
+      <div class="hover_effect_box hover_effect_3">
+        <div class="content_bg">
+          <%= image_tag "james3.jpg", class: "content_img" %>
+        </div>
+        <div class="caption">
+          <div class="caption_title">Welcome!!!</div>
+          <div class="caption_desc">
+            ようこそ、Bashroom！このサイトは、バスケットボールシューズレビュー<br>
+            サイトになります。会員ではない方は<br>
+            バスケットボールレビューの閲覧、コメントはできません。
+          </div>
+          <%= link_to public_homes_about_path, class:"caption_link" do %>About Page<% end %>
+        </div>
+      </div>
       <div class="mx-auto">
         <h2>新着レビュー</h2>
         <div class="row" >
@@ -46,32 +41,31 @@
                     <p>Review Title<br><%= shoes_review.title %></p>
                   </div>
                   <% if user_signed_in? %><!--ログインした時ー-->
-                  <%= link_to "詳細", public_shoes_review_path(shoes_review), class:"card-link"  %>
+                    <%= link_to "詳細", public_shoes_review_path(shoes_review), class:"card-link"  %>
                   <% else %><!--ログインしてないー-->
-                  <%= link_to "詳細", new_user_session_path, class:"card-link"  %>
+                    <%= link_to "詳細", new_user_session_path, class:"card-link"  %>
                   <% end %>
                 </div>
               </div>
             </div>
           <% end %>
         </div>
-      <div  style="margin-top: 10px;">
-        <% if user_signed_in? %><!--ログインした時ー-->
-      　<%= link_to public_shoes_reviews_path, class:"btn-b" do %>全てのレビューを見る
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <% end %>
-        <% else %><!--ログインしてないー-->
-        <%= link_to new_user_session_path, class:"btn-b" do %>全てのレビューを見る
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <% end %>
-        <% end %>
-
+        <div  style="margin-top: 10px;">
+          <% if user_signed_in? %><!--ログインした時ー-->
+        　   <%= link_to public_shoes_reviews_path, class:"btn-b" do %>全てのレビューを見る
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            <% end %>
+          <% else %><!--ログインしてないー-->
+            <%= link_to new_user_session_path, class:"btn-b" do %>全てのレビューを見る
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
