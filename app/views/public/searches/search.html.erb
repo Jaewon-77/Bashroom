@@ -15,21 +15,21 @@
   </thead>
   <tbody>
     <% @users.each do |user| %>
-      <tr>
-        <td><%= user.nickname %></td>
-        <td>
-          <% if user.image.attached? %>
-            <%= image_tag user.image, class: "rounded-circle", size: "50x50" %>
-          <% else %>
-            <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
-          <% end %>
-        </td>
-        <% user.shoes_reviews.each do |shoes_review| %>
-          <% if shoes_review.image.attached? %>
-            <td>
-              <%= image_tag shoes_review.image, size: "50x50" %>
-            </td>
-          <% else %>
+      <% user.shoes_reviews.each do |shoes_review| %>
+        <tr>
+          <td><%= user.nickname %></td>
+          <td>
+            <% if user.image.attached? %>
+              <%= image_tag user.image, class: "rounded-circle", size: "50x50" %>
+            <% else %>
+              <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
+            <% end %>
+          </td>
+            <% if shoes_review.image.attached? %>
+              <td>
+                <%= image_tag shoes_review.image, size: "50x50" %>
+              </td>
+            <% else %>
             <td>
               <%= image_tag 'no_image', size: "50x50" %>
             </td>
@@ -39,8 +39,8 @@
               <%= shoes_review.title %>
             <% end %>
           </td>
+        </tr>
         <% end %>
-      </tr>
     <% end %>
   </tbody>
   <% else %>

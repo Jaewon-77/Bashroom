@@ -879,3 +879,7 @@ h2:hover {
   background-color: purple;
   animation-delay: 1s;
 }
+// footer固定
+main {
+  min-height: calc(100vh - 163px - 186px);
+}
