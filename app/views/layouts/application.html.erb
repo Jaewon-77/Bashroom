@@ -19,6 +19,14 @@
     </div>
     <%= render 'layouts/header' %>
     <main style="border: 5px double #FF1A6F;">
+      <!--フラッシュメッセージ-->
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+      <% end %>
+       <!--プロフィール記入してない時-->
+      <% if current_user && !@is_profile_set %>
+      　<div><%= link_to public_user_path(current_user) do %>★プロフィールを全て入力してください★ <% end %></div>
+      <% end %>
       <div class="text-center">
         <div class='music'>
           <div class='bar'></div>
@@ -33,16 +41,7 @@
           <div class='bar'></div>
         </div>
       </div>
-      <!--プロフィール記入してない時-->
-      <% if current_user && !@is_profile_set %>
-      　<div><%= link_to public_user_path(current_user) do %>★プロフィールを全て入力してください★ <% end %></div>
-      <% end %>
-      <!--フラッシュメッセージ-->
-      <% flash.each do |message_type, message| %>
-        <div class="flash-message <%= message_type %>"><%= message %></div>
-      <% end %>
       <%= yield %>
-
     </main>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <!--topに戻る-->

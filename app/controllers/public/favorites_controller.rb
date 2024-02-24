@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @shoes_review = ShoesReview.find(params[:shoes_review_id])
@@ -13,9 +14,6 @@ class Public::FavoritesController < ApplicationController
     favorite.destroy
     #redirect_to request.referer
   end
-
-
-
 
 
 end

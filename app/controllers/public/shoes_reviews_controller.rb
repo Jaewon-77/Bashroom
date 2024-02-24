@@ -1,4 +1,6 @@
 class Public::ShoesReviewsController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
      @shoes_review = ShoesReview.new
   end
