@@ -6,7 +6,7 @@
           <%= @shoes_review.title %>のReview
         </div>
         <div class="col-3" style="border-bottom: 5px double #FF1A6F; font-size: 30px; border-right: 5px double #FF1A6F;">
-          <%= link_to public_user_path(@shoes_review.user.id)  do %>
+          <%= link_to public_user_path(@shoes_review.user.id), class:"review-path" do %>
             <% if @user.image.attached? %>
               <%= image_tag @user.image, class: "rounded-circle", size: "40x40" %>
             <% else %>
@@ -104,10 +104,12 @@
       <div class="row-8">
         <% @shoes_review.comments.each do |comment| %>
           <div class="col-8 mb-2 mt-2" style="border: 5px double #FF1A6F; background-color: black;">
-            <% if @user.image.attached? %>
-              <%= image_tag @user.image, class: "rounded-circle", size: "30x30" %>
-            <% else %>
-              <%= image_tag 'no_image', class: "rounded-circle", size: "30x30" %>
+            <%= link_to public_user_path(comment.user.id), class:"review-path" do %>
+              <% if comment.user.image.attached? %>
+                <%= image_tag comment.user.image, class: "rounded-circle", size: "30x30" %>
+              <% else %>
+                <%= image_tag 'no_image', class: "rounded-circle", size: "30x30" %>
+              <% end %>
             <% end %>
             Nickname: <%= comment.user.nickname %>
             <%= comment.created_at.strftime('%Y/%m/%d') %><br>
@@ -140,5 +142,3 @@
     </div>
   </div>
 </div>
-
-

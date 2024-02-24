@@ -7,6 +7,14 @@ class ShoesReview < ApplicationRecord
   has_many :favorites, dependent: :destroy
   #タグ機能
   has_many :tags, through: :post_tags
+  validates :title, presence: true
+  validates :traction, presence: true
+  validates :cushion, presence: true
+  validates :fit, presence: true
+  validates :support, presence: true
+  validates :weight, presence: true
+  validates :review, presence: true
+
 
 #靴機能点数合計
   def sum_total

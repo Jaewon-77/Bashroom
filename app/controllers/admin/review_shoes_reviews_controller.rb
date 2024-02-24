@@ -1,4 +1,5 @@
 class Admin::ReviewShoesReviewsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @shoes_reviews = ShoesReview.all
