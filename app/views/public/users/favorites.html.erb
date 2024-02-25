@@ -23,14 +23,14 @@
                 <% if @user.image.attached? %>
                   <%= image_tag @user.image, class: "rounded-circle", size: "50x50" %>
                 <% else %>
-                  <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
+                  <%= image_tag 'no_image.jpg', class: "rounded-circle", size: "50x50" %>
                 <% end %>
               </td>
               <td>
                 <% if shoes_review.image.attached? %>
                   <%= image_tag shoes_review.image, size: "50x50" %>
                 <% else %>
-                  <%= image_tag 'no_image', size: "50x50" %>
+                  <%= image_tag 'no_image.jpg', size: "50x50" %>
                 <% end %>
               </td>
               <td>

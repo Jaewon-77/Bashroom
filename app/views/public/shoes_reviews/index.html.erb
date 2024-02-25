@@ -31,7 +31,7 @@
                 <% if shoes_review.image.attached? %>
                   <%= image_tag shoes_review.image, size: "200x200" %>
                 <% else %>
-                  <%= image_tag 'no_image', size: "200x200" %>
+                  <%= image_tag 'no_image.jpg', size: "200x200" %>
                 <% end %>
                 <br>投稿番号：<%= shoes_review.id %>
                 <br>投稿日：<%= shoes_review.created_at.strftime('%Y/%m/%d') %>
@@ -41,7 +41,7 @@
                   <% if shoes_review.user.image.attached? %>
                     <%= image_tag shoes_review.user.image, class: "rounded-circle", size: "50x50" %>
                   <% else %>
-                    <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
+                    <%= image_tag 'no_image.jpg', class: "rounded-circle", size: "50x50" %>
                   <% end %>
                   Nickname<br><%= shoes_review.user.nickname %>
                 </h2>
