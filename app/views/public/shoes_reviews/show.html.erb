@@ -10,7 +10,7 @@
             <% if @user.image.attached? %>
               <%= image_tag @user.image, class: "rounded-circle", size: "40x40" %>
             <% else %>
-              <%= image_tag 'no_image', class: "rounded-circle", size: "40x40" %>
+              <%= image_tag 'no_image.jpg', class: "rounded-circle", size: "40x40" %>
             <% end %>
           <% end %>
           投稿者:<%=@user.nickname%>
@@ -28,7 +28,7 @@
           <% if @shoes_review.image.attached? %>
             <%= image_tag @shoes_review.image, size: "250x250" %>
           <% else %>
-            <%= image_tag 'no_image', size: "200x200" %>
+            <%= image_tag 'no_image.jpg', size: "200x200" %>
           <% end %>
         </div>
         <div class="col-12 mt-3 text-center" style="font-size: 30px;">BasketballShoes Photo</div>
@@ -108,7 +108,7 @@
               <% if comment.user.image.attached? %>
                 <%= image_tag comment.user.image, class: "rounded-circle", size: "30x30" %>
               <% else %>
-                <%= image_tag 'no_image', class: "rounded-circle", size: "30x30" %>
+                <%= image_tag 'no_image.jpg', class: "rounded-circle", size: "30x30" %>
               <% end %>
             <% end %>
             Nickname: <%= comment.user.nickname %>
