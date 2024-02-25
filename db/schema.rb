@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 2024_02_04_082947) do
 
   create_table "shoes_reviews", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "title", default: "", null: false
-    t.text "review", default: "", null: false
+    t.string "title", null: false
+    t.text "review", null: false
     t.integer "traction", null: false
     t.integer "cushion", null: false
     t.integer "fit", null: false
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2024_02_04_082947) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -112,13 +112,13 @@ ActiveRecord::Schema.define(version: 2024_02_04_082947) do
     t.string "favorite_brand"
     t.string "favorite_shoes_name"
     t.float "size"
+    t.boolean "is_active", default: true
     t.integer "age"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_active", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
