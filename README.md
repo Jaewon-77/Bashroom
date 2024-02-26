@@ -25,7 +25,9 @@
 - バスケットボールのシューズの情報が欲しい人
 ​
 ## 設計書
-<!--テーマを設定・提出する時点では不要です-->
+- ER図 https://drive.google.com/file/d/1lKBKSNZLh0lWeg3NA46fe_mAcYQIPtus/view?usp=sharing
+- テーブル定義書 https://docs.google.com/spreadsheets/d/1O0eRvbag8f1ua6oZp3lJET27UtFEDTd1/edit?usp=sharing&ouid=104815188118820788575&rtpof=true&sd=true
+- アプリケーション詳細設計 https://docs.google.com/spreadsheets/d/1kdD5Q2pL5yCUa49AqH1onUmIsTVZRW_l8YA53b43ZQM/edit?usp=sharing
 ​
 ## 開発環境
 - OS：Linux(CentOS)
