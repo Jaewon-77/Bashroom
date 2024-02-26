@@ -7,6 +7,8 @@ class ShoesReview < ApplicationRecord
   has_many :favorites, dependent: :destroy
   #タグ機能
   has_many :tags, through: :post_tags
+  has_one_attached :image
+
   validates :title, presence: true
   validates :traction, presence: true
   validates :cushion, presence: true
