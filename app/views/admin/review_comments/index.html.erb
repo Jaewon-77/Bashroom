@@ -19,7 +19,7 @@
             <tr>
               <td>
                 <%= link_to admin_user_path(comment.user) do %>
-                  <%= @users.find(comment.user_id).first_name %><%= @users.find(comment.user_id).last_name %>
+                  <%= @users.find(comment.user_id).last_name %><%= @users.find(comment.user_id).first_name %>
                 <% end %>
               </td>
               <td><%= comment.user.nickname %></td>

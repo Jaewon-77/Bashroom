@@ -73,9 +73,7 @@ GUEST_USER_EMAIL = "guest@example.com"
     end
   end
 
-  def deactivate_account
-    update_attribute(:is_active, false)
-  end
+  
 
 
 
