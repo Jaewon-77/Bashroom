@@ -65,7 +65,7 @@ GUEST_USER_EMAIL = "guest@example.com"
     end
   end
   #会員ステータス
-  def user_status
+  def user_state
     if is_active?
       "有効"
     else
@@ -73,6 +73,9 @@ GUEST_USER_EMAIL = "guest@example.com"
     end
   end
 
+  def deactivate_account
+    update_attribute(:is_active, false)
+  end
 
 
 
