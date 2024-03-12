@@ -7,7 +7,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to public_homes_top_path, notice: "guestuserでログインしました。"
+    redirect_to public_homes_top_path, notice: "guestuser login sucessful"
   end
 
   # GET /resource/sign_in
@@ -38,6 +38,7 @@ def user_state
     return if user.nil?# 【処理内容2】 アカウントを取得できなかった場合、このメソッドを終了する
     return unless user.valid_password?(params[:user][:password])# 【処理内容3】 取得したアカウントのパスワードと入力されたパスワードが一致していない場合、このメソッドを終了する
     unless user.is_active# 【処理内容4】 アクティブでない会員に対する処理
+      reset_session
       flash[:alert] = "すでに退会しています。"
       redirect_to new_user_registration_path
     end

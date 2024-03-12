@@ -1,83 +1,93 @@
 <div class="container">
   <div class="row mt-3 mb-3 offset-1 text-center">
     <div class="col-12">
-      <h2>ユーザープロフィール</h2>
+      <h2 style="font-family: 'Sacramento', cursive;"><%= @user.nickname %>さんのプロフィール画面</h2>
     </div>
     <div class="col-12">
       <% if @user.image.attached? %>
         <%= image_tag @user.image, class: "rounded-circle", size: "200x200" %>
       <% else %>
-        <%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %>
+        <%= image_tag 'no_image.jpg', class: "rounded-circle", size: "200x200" %>
       <% end %>
     </div>
     <div class="col-12">
-      <h5>プロフィール写真</h5>
+      <h5>Profile Photo</h5>
     </div>
   </div>
   <div class="row mt-3">
-    <div class="col-2">
-      <%= link_to "編集", public_users_information_edit_path, class:"btn btn-primary" %>
+    <div class="col-2 text-right" style="margin-bottom: 20px;">
+      <% if @user.email != "guest@example.com" %>
+        <% if @user.id == current_user.id %>
+          <a href="/public/users/information/edit" class="btn-a">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+              <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path>
+            </svg>
+            <span>Profile Edit</span>
+          </a>
+        <% end %>
+      <% end %>
     </div>
     <div class="col-12">
-      <div style="padding: 15px; margin-bottom: 10px; border: 5px double #660000; background-color: #AFEEEE;">
-      <table class="table table-bordered">
-        <tr>
-          <th class="table-active w-25">メールアドレス</th>
-          <td><%= @user.email %></td>
-        </tr>
-        <tr>
-          <th class="table-active w-25">氏名</th>
-          <td><%= @user.last_name %><%= @user.first_name %></td>
-        </tr>
-        <tr>
-          <th class="table-active w-25">フリガナ</th>
-          <td><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
-        </tr>
-        <tr>
-          <th class="table-active w-25">ニックネーム</th>
-          <td><%= @user.nickname %></td>
-        </tr>
-        <tr>
-          <th class="table-active w-25">年齢</th>
-          <td><%= @user.age %></td>
-        </tr>
-        <tr>
-          <th class="table-active w-25">住所</th>
-          <td><%= @user.address %></td>
-        </tr>
-        <tr>
-          <th class="table-active w-25">好きなバスケットボールシューズブランド名</th>
-          <td><%= @user.favorite_brand %></td>
-        </tr>
-        <tr>
-          <th class="table-active w-25">好きなバスケットボールシューズ名</th>
-          <td><%= @user.favorite_shoes_name %></td>
-        </tr>
-        <tr>
-          <th class="table-active w-25">バスケットボールシューズサイズ</th>
-          <td><%= @user.size %></td>
-        </tr>
-        <!--추가 하고 싶은것은 팔로우수 팔로워수 그리고 그 팔로우수로 이동 할수있게 하는 것-->
-      </table>
+      <div style="padding: 15px; margin-bottom: 30px; border: 5px double #FF1A6F;">
+        <table class="table table-dark table-striped　table-bordered table-hover text-white" style="background-color: black">
+          <% if @user.id == current_user.id %>
+            <tr>
+              <th class="table-active w-25">E-mail</th>
+              <td><%= @user.email %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <th class="table-active w-25">フリガナ</th>
+            <td><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
+          </tr>
+          <tr>
+            <th class="table-active w-25">氏名</th>
+            <td><%= @user.last_name %><%= @user.first_name %></td>
+          </tr>
+          <tr>
+            <th class="table-active w-25">Nickname</th>
+            <td><%= @user.nickname %></td>
+          </tr>
+          <tr>
+            <th class="table-active w-25">年齢</th>
+            <td><%= @user.age %></td>
+          </tr>
+          <% if @user.id == current_user.id %>
+            <tr>
+              <th class="table-active w-25">Address</th>
+              <td><%= @user.address %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <th class="table-active w-25">好きなバスケットボールシューズブランド名</th>
+            <td><%= @user.favorite_brand %></td>
+          </tr>
+          <tr>
+            <th class="table-active w-25">好きなバスケットボールシューズ名</th>
+            <td><%= @user.favorite_shoes_name %></td>
+          </tr>
+          <tr>
+            <th class="table-active w-25">バスケットボールシューズサイズ</th>
+            <td><%= @user.size %></td>
+          </tr>
+          <tr>
+            <th class="table-active w-25">Follow</th>
+            <td><%= link_to public_user_followings_path(@user.id), class: 'btn btn-outline-light' do %><%= @user.followings.count %> <% end %></td>
+          </tr>
+          <tr>
+            <th class="table-active w-25">Follower</th>
+            <td><%= link_to public_user_followers_path(@user.id), class: 'btn btn-outline-light' do %><%= @user.followers.count %> <% end %></td>
+          </tr>
+          <tr>
+            <th class="table-active w-25">作成したレビュー</th>
+            <td><%= link_to "一覧を見る", public_users_user_shoes_reviews_path(@user.id), class:"btn btn-outline-light" %></td>
+          </tr>
+          <tr>
+            <th class="table-active w-25">いいねしたレビュー</th>
+            <td><%= link_to "一覧を見る", public_users_favorites_path(@user.id), class:"btn btn-outline-light" %></td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
-</div>
-  <div class="row mt-3">
-    <div class="col-3">
-      <h3>作成したレビュー一覧</h3>
-    </div>
-    <div class="col">
-      <%#= link_to "一覧を見る", public_?_path, class:"btn btn-primary" %>
-    </div>
-  </div>
-
-  <div class="row my-2">
-    <div class="col-3">
-      <h3>いいねしたレビュー一覧</h3>
-    </div>
-    <div class="col">
-      <%#= link_to "一覧を見る", public_?, class:"btn btn-primary" %>
-    </div>
-  </div>
-
 </div>

@@ -1,2 +1,63 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container">
+  <div class="row mt-3 mb-3 offset-1 text-center">
+    <h2 style="font-family: 'Sacramento', cursive; border: 5px double #FF1A6F;"><%= @user.last_name_kana %><%= @user.first_name_kana %>さんの会員詳細編集</h2>
+  </div>
+  <%= form_with model: @user, url: admin_user_path(@user), method: :patch, local: true do |f| %>
+    <div style="padding: 15px; margin-bottom: 30px; border: 5px double #FF1A6F;">
+      <table class="table table-dark table-striped　table-bordered table-hover text-white" style="background-color: black">
+        <tr>
+          <td>会員ID</td>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "氏名 (姓) (名)" %></td>
+          <td><%= f.text_field :last_name,  placeholder: "姓" ,class:"mr-3" %><%= f.text_field :first_name,  placeholder: "名" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "フリガナ (セイ) (メイ)" %></td>
+          <td><%= f.text_field :last_name_kana, placeholder: "セイ" ,class:"mr-3" %><%= f.text_field :first_name_kana, placeholder: "メイ" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "年齢" %></td>
+          <td><%= f.text_field :age, placeholder: "20" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "ニックネーム" %></td>
+          <td><%= f.text_field :nickname, placeholder: "Nickname" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "メールアドレス" %></td>
+          <td><%= f.email_field :email, placeholder: "xxxxx@xxxxx.com" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "住所" %></td>
+          <td><%= f.text_field :address, placeholder: "長野県XX市XX区XX町0-0" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "好きなブランド" %></td>
+          <td><%= f.text_field :favorite_brand, placeholder: "0901231234" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "好きなバスケットボールシューズ" %></td>
+          <td><%= f.text_field :favorite_shoes_name, placeholder: "0901231234" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "バスケットボールシューズサイズ" %></td>
+          <td><%= f.text_field :size, placeholder: "0901231234" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "会員ステータス" %></td>
+          <td>
+            <%= f.radio_button :is_active, :true %>
+            <%= f.label :is_active, "有効" %>
+            <%= f.radio_button :is_active, :false %>
+            <%= f.label :is_active, "退会" %><br/>
+          </td>
+        </tr>
+      </table>
+      <div align="center">
+        <%= f.submit "変更を保存", class: 'btn btn-success' %>
+      </div>
+    </div>  
+  <% end %>
+</div>

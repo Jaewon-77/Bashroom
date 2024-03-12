@@ -1,64 +1,60 @@
-
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
-      <%#= render 'users/userinfo', user: @user %>
+    <div class="col-1">
+      <%= image_tag "shoesreview.PNG", :size => "143x143" %>
     </div>
-    <div class="col-md-8 offset-md-1">
-      <br>
-      <br>
-      <br>
+    <div class="col-11 row">
       <!--検索機能-->
-      <%= render 'public/searches/search' %>
-      <h2>Shoes Review</h2>
-       <div class="col-11 px-sm-0 text-right mt-3">
-        <%= link_to new_public_shoes_review_path do %>
-        <button type="button" class="btn btn-light rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+      <div class="col-8 offset-2">
+   　　   <%= render 'public/searches/search' %>
+      </div>
+      <div class="col-10 offset-2">
+        <!--タグリスト-->
+        <% @tag_list.each do |list|%>
+          <i class="fa-sharp fa-solid fa-tag"></i>
+          <%=link_to list.name,public_search_tag_path(tag_id: list.id) %>
+          <%="(#{list.shoes_reviews.count})" %>
         <% end %>
       </div>
-      <table class="table">
-        <thead>
-          <th colspan="1"></th>
-          <th>User Nickname</th>
-          <th>User Profile Photo</th>
-           <th>Basketball Shoes Photo</th>
-          <th>Title</th>
-        </thead>
-        <tbody>
-     <% @shoes_reviews.each do |shoes_review| %>
-       <tr>
-         <td><%= shoes_review.user.nickname %></td>
-         <td> <% if @user.image.attached? %>
-        <%= image_tag @user.image, class: "rounded-circle", size: "200x200" %>
-      <% else %>
-        <%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %>
-      <% end %></td>
-         
-         
-         
-          <td> <% if shoes_review.image.attached? %>
-        <%= image_tag shoes_review.image, size: "200x200" %>
-      <% else %>
-        <%= image_tag 'no_image', size: "200x200" %>
-      <% end %>
-          </td>
-           
-         
-         <td><%= link_to public_shoes_review_path(shoes_review.id) do %> <%= shoes_review.title  %> <% end %></td>
-
-         <td>
-　　     </td>
-         <td>
-           <p></p>
-         </td>
-         <td><td></td></td>
-
-       </tr>
-     <% end %>
-       </tbody>
-
-     </table>
+      <div class="col-1 offset-11 mt-3">
+        <%= link_to new_public_shoes_review_path do %>
+          <button type="button" class="btn btn-light rounded-circle p-0" style="width:2rem; height:2rem;">＋</button>
+        <% end %>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row" style="padding: 15px; margin-top: 30px; margin-bottom: 30px; border: 5px double #FF1A6F;">
+        <% @shoes_reviews.each do |shoes_review| %>
+          <div class="wrapper col-md-3 col-sm-6"style="padding: 15px; margin-bottom: 5px; border: 5px double #FF1A6F;">
+            <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+              <div class="card-front">
+                <% if shoes_review.image.attached? %>
+                  <%= image_tag shoes_review.image, size: "200x200" %>
+                <% else %>
+                  <%= image_tag 'no_image.jpg', size: "200x200" %>
+                <% end %>
+                <br>投稿番号：<%= shoes_review.id %>
+                <br>投稿日：<%= shoes_review.created_at.strftime('%Y/%m/%d') %>
+              </div>
+              <div class="card-back">
+                <h2 class="card-title">
+                  <% if shoes_review.user.image.attached? %>
+                    <%= image_tag shoes_review.user.image, class: "rounded-circle", size: "50x50" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', class: "rounded-circle", size: "50x50" %>
+                  <% end %>
+                  Nickname<br><%= shoes_review.user.nickname %>
+                </h2>
+                <div class="card-description">
+                  <p>Review Title<br><%= shoes_review.title %></p>
+                </div>
+                <%= link_to "詳細", public_shoes_review_path(shoes_review), class:"card-link"  %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <%= paginate @shoes_reviews %>
     </div>
   </div>
 </div>
-

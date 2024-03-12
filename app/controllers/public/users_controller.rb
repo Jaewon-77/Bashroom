@@ -1,8 +1,9 @@
 class Public::UsersController < ApplicationController
-  #before_action :authenticate_customer!
+  before_action :authenticate_user!
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
+    @shoes_reviews = @user.shoes_reviews
   end
 
   def edit
@@ -12,8 +13,10 @@ class Public::UsersController < ApplicationController
   def update
     user = User.find(current_user.id)
     if user.update(user_params)
-      redirect_to public_users_mypage_path, notice: "変更内容を保存しました。"
+      flash[:notice] = "変更内容を保存しました。"
+      redirect_to public_user_path(user.id)
     else
+      flash[:notice] = "変更内容を保存できませんでした。"
       render :edit
     end
   end
@@ -25,13 +28,24 @@ class Public::UsersController < ApplicationController
     @user = User.find(current_user.id)
     @user.update(is_active: false)
     reset_session
-    redirect_to public_top_path, notice: "退会処理を実行いたしました。"
+    redirect_to public_homes_top_path, notice: "退会処理を実行致しました。"
+  end
+   #いいねした投稿文一覧機能
+  def favorites
+    @user = User.find(params[:id])
+    @shoes_reviews = @user.favorite_shoes_reviews
+  end
+
+  def user_shoes_reviews
+    @user = User.find(params[:id])
+    @shoes_reviews = @user.shoes_reviews
   end
 
   private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :nickname, :address, :favorite_brand, :email, :favorite_shoes_name, :size, :age, :image)
+    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :nickname, :address, :favorite_brand, :email, :favorite_shoes_name, :size, :age, :image )
   end
+
 
 
 end

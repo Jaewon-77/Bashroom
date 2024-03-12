@@ -1,39 +1,73 @@
 <div class="container">
   <div class="row my-3">
-    <div class="col-md-2 mx-auto my-3">
-    </div>
-    <div class="col-md-10 my-3 text-center">
-      <h1>Welcome!!!</h1>
-      <div class"mx-auto">
-          <p>ようこそ、Bashroom！<br>
-              このサイトは、バスケットボールシューズレビューサイトになります。<br>
-              会員ではない方はバスケットボールレビューの閲覧、コメントはできません。<br>
-          </p>
-      </div>
-       <div class="text-center my-3">
-          <%= image_tag 'main1.jpg', size: '1300x500' %>
+    <div class="my-3 text-center">
+      <div class="hover_effect_box hover_effect_3">
+        <div class="content_bg">
+          <%= image_tag "james3.jpg", class: "content_img" %>
         </div>
-        
-        <div class="mx-auto">
+        <div class="caption">
+          <div class="caption_title">Welcome!!!</div>
+          <div class="caption_desc">
+            ようこそ、Bashroom！このサイトは、バスケットボールシューズレビュー<br>
+            サイトになります。会員ではない方は<br>
+            バスケットボールレビューの閲覧、コメントはできません。
+          </div>
+          <%= link_to public_homes_about_path, class:"caption_link" do %>About Page<% end %>
+        </div>
+      </div>
+      <div class="page-wrapper mt-4 mb-2"> 
         <h2>新着レビュー</h2>
-        <div class="row">
-          <%# @shoes_reviews.first(4).each do |item| %>
-            <div class="col-md-3 col-sm-6">
+        <div class="row" >
+          <% @shoes_reviews.first(4).each do |shoes_review| %>
+            <div class="wrapper col-md-3 col-sm-6"style="padding: 15px; margin-bottom: 5px; border: 5px double #FF1A6F;">
               <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
-                <%#= link_to public_shoes_review_path(item) do %>
-                <%#= image_tag item.get_image(100,100) %>
-                <%# end %>
-                <div class="card-body">
-                  <p class="card-text"><%#= shoes_reviews.name %></p>
+                <div class="card-front">
+                  <% if shoes_review.image.attached? %>
+                    <%= image_tag shoes_review.image, size: "200x200" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', size: "200x200" %>
+                  <% end %>
+                </div>
+                <div class="card-back">
+                  <h2 class="card-title">
+                    <% if shoes_review.user.image.attached? %>
+                      <%= image_tag shoes_review.user.image, class: "rounded-circle", size: "50x50" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', class: "rounded-circle", size: "50x50" %>
+                    <% end %>
+                    Nickname<br><%= shoes_review.user.nickname %>
+                  </h2>
+                  <div class="card-description">
+                    <p>Review Title<br><%= shoes_review.title %></p>
+                  </div>
+                  <% if user_signed_in? %><!--ログインした時ー-->
+                    <%= link_to "詳細", public_shoes_review_path(shoes_review), class:"card-link"  %>
+                  <% else %><!--ログインしてないー-->
+                    <%= link_to "詳細", new_user_session_path, class:"card-link"  %>
+                  <% end %>
                 </div>
               </div>
             </div>
-          <%# end %>
+          <% end %>
         </div>
-        <div class="all-items-show-button"><%#= link_to "全ての商品をみる", public_items_path %></div>
-        
-        
-        
+        <div  style="margin-top: 10px;">
+          <% if user_signed_in? %><!--ログインした時ー-->
+        　   <%= link_to public_shoes_reviews_path, class:"btn-b" do %>全てのレビューを見る
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            <% end %>
+          <% else %><!--ログインしてないー-->
+            <%= link_to new_user_session_path, class:"btn-b" do %>全てのレビューを見る
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+</div>

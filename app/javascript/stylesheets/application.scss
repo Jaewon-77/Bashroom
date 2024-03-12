@@ -1,1 +1,885 @@
 @use '~bootstrap/scss/bootstrap';
+
+.review-path {
+  text-decoration: none !important;
+}
+
+.no-decoration {
+  text-decoration: none !important;
+  color: white !important;
+}
+
+// 編集ボタン
+.btn-a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #FFABCE;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 1s all;
+    text-decoration: none !important;
+}
+
+
+.btn-a svg {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    height: 20px;
+    fill: #353535;
+    transition: .5s all;
+    opacity: 0;
+}
+
+.btn-a span {
+    color: #111111;
+    text-align: center;
+    z-index: 1;
+}
+
+.btn-a:hover span {
+    animation: textAnime 1s linear forwards;
+}
+
+.btn-a:hover svg {
+    animation: iconAnime 1s 0.7s linear forwards;
+}
+
+@keyframes textAnime {
+    0% {
+        transform: scaleX(1);
+    }
+
+    50% {
+        font-weight: bold;
+        transform: scaleX(1.3);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleX(0.3);
+        opacity: 0;
+    }
+
+}
+
+@keyframes iconAnime {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        transform: rotate(-50deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-50deg);
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+// トップページの新規レビュー
+.pic-container {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: #f1f1f1;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.card {
+    position: relative;
+    cursor: pointer;
+    width: 30%;
+    height: 330px;
+    padding: 1rem;
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    text-align: center;
+    transition: 0.5s;
+    box-shadow: 0 0 10px #555;
+    padding-top: 65px;
+}
+
+.card-front {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: brightness(80%);
+    transform: rotateY(0deg);
+}
+
+.card-back {
+    padding: 2rem 1rem;
+    color: white;
+    box-sizing: border-box;
+    transform: rotateY(180deg);
+    background-color: #353535;
+}
+
+
+.card:hover .card-front {
+    transform: rotateY(-180deg);
+}
+
+.card:hover .card-back {
+    transform: rotateY(0deg);
+}
+
+
+.card-title {
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-description {
+    margin: 1rem 0 4rem;
+    line-height: 1.5;
+}
+
+.card-link {
+    padding: 1rem;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #fff;
+    transition: all .5s;
+}
+
+.card-link:hover {
+    background-color: #fff;
+    color: #333;
+}
+// ネオンボタン
+.btn-b{
+    position: relative;
+    display: inline-block;
+    padding: 25px 30px;
+    margin: 40px 0;
+    color: #FF99CC;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    overflow: hidden;
+    margin-right: 50px;
+    text-decoration: none !important;
+}
+
+.btn-b:hover{
+    background: #FF99CC;
+    color: #050801;
+    box-shadow: 0 0 5px #FF99CC,
+                0 0 25px #FF99CC,
+                0 0 50px #FF99CC,
+                0 0 200px #FF99CC;
+     -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+}
+.btn-b:nth-child(1){
+    filter: hue-rotate(270deg);
+}
+.btn-b:nth-child(2){
+    filter: hue-rotate(110deg);
+}
+.btn-b span{
+    position: absolute;
+    display: block;
+}
+.btn-b span:nth-child(1){
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,transparent,#FF00FF);
+    animation: animate1 1s linear infinite;
+}
+@keyframes animate1{
+    0%{
+        left: -100%;
+    }
+    50%,100%{
+        left: 100%;
+    }
+}
+.btn-b span:nth-child(2){
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg,transparent,#FF00FF);
+    animation: animate2 1s linear infinite;
+    animation-delay: 0.25s;
+}
+@keyframes animate2{
+    0%{
+        top: -100%;
+    }
+    50%,100%{
+        top: 100%;
+    }
+}
+.btn-b span:nth-child(3){
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg,transparent,#FF00FF);
+    animation: animate3 1s linear infinite;
+    animation-delay: 0.50s;
+}
+@keyframes animate3{
+    0%{
+        right: -100%;
+    }
+    50%,100%{
+        right: 100%;
+    }
+}
+
+
+.btn-b span:nth-child(4){
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg,transparent,#FF00FF);
+    animation: animate4 1s linear infinite;
+    animation-delay: 0.75s;
+}
+@keyframes animate4{
+    0%{
+        bottom: -100%;
+    }
+    50%,100%{
+        bottom: 100%;
+    }
+}
+// 削除ボタン
+.btn-d {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #800000;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 1s all;
+    text-decoration: none !important;
+}
+
+
+.btn-d svg {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    height: 20px;
+    fill: #FFFFEE;
+    transition: .5s all;
+    opacity: 0;
+}
+
+.btn-d span {
+    color: #FFFFEE;
+    text-align: center;
+    z-index: 1;
+}
+
+.btn-d:hover span {
+    animation: textAnime 1s linear forwards;
+}
+
+.btn-d:hover svg {
+    animation: iconAnime 1s 0.7s linear forwards;
+}
+
+
+
+// スクロール
+.box-scroll {
+    background-color: #f9f9f9;
+    color: #f9f9f9;
+    overflow-y: scroll;
+
+}
+
+.box-scroll::-webkit-scrollbar {
+    width: 15px;
+}
+
+.box-scroll::-webkit-scrollbar-track {
+    background-color: #000;
+    border: 3px solid #aaa;
+}
+
+.box-scroll::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(135deg, #F6D242 10%, #FF52E5 100%);
+}
+
+// Topに戻る
+#pagetop {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    margin: 0;
+
+}
+#pagetop a{
+    position: relative;
+    display: flex;
+    width: 70px;
+    height: 70px;
+    justify-content: center;
+    background: lightpink;/*背景の色を変える*/
+    transition: opacity .6s ease;
+    color: #FFFFFF;/*アイコンの色を変える*/
+    align-items: center;
+    text-decoration: none;
+    font-size: 32px;
+    border-radius: 100%;
+}
+#pagetop a:hover {
+    opacity: .3;
+}
+@media screen and (max-width:767px) {
+#pagetop a {
+    width: 50px;
+    height: 50px;
+}
+}
+
+// トップページのメイン写真
+
+.hover_effect_box {
+    width: 1140px;
+    height: 735px;
+    margin: 10px;
+    border: 10px solid #f3f3f3;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    -webkit-box-shadow: 1px 1px 2px #e6e6e6;
+    -moz-box-shadow: 1px 1px 2px #e6e6e6;
+    box-shadow: 1px 1px 2px #e6e6e6;
+    cursor: default;
+    background: #fff;
+    box-sizing: initial;
+ }
+ .hover_effect_box * {
+    box-sizing: initial;
+ }
+
+ .hover_effect_box .caption
+ , .hover_effect_box .mask  {
+    width: 1140px;
+    height: 735px;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+ }
+ .hover_effect_box .content_bg {
+    display: block;
+    position: relative;
+ }
+ .hover_effect_box .caption_title {
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    font-size: 30px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    margin: 20px 0 0 0;
+ }
+ .hover_effect_box .caption_desc {
+    font-size: 1.9em;
+    line-height: 1.5;
+    position: relative;
+    color: #fff;
+    padding: 30px 20px 40px;
+    text-align: center;
+ }
+ .hover_effect_box .caption_link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 14px;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    -webkit-box-shadow: 0 0 1px #000;
+    -moz-box-shadow: 0 0 1px #000;
+    box-shadow: 0 0 1px #000;
+ }
+ .hover_effect_box .caption_link:hover {
+    -webkit-box-shadow: 0 0 5px #000;
+    -moz-box-shadow: 0 0 5px #000;
+    box-shadow: 0 0 5px #000;
+ }
+
+ .hover_effect_1 .content_bg {
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+ }
+.hover_effect_3 .content_bg {
+    -webkit-transition: all 0.4s ease-in-out 0.5s;
+    -moz-transition: all 0.4s ease-in-out 0.5s;
+    -o-transition: all 0.4s ease-in-out 0.5s;
+    -ms-transition: all 0.4s ease-in-out 0.5s;
+    transition: all 0.4s ease-in-out 0.5s;
+ }
+ .hover_effect_3 .caption {
+    background-color: rgba(146,96,91,0.5);
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transition: all 0.3s ease-in 0.4s;
+    -moz-transition: all 0.3s ease-in 0.4s;
+    -o-transition: all 0.3s ease-in 0.4s;
+    -ms-transition: all 0.3s ease-in 0.4s;
+    transition: all 0.3s ease-in 0.4s;
+ }
+ .hover_effect_3 .caption_title {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    background: transparent;
+    margin: 20px 40px 0px 40px;
+    -webkit-transform: scale(10);
+    -moz-transform: scale(10);
+    -o-transform: scale(10);
+    -ms-transform: scale(10);
+    transform: scale(10);
+    -webkit-transition: all 0.3s ease-in-out 0.1s;
+    -moz-transition: all 0.3s ease-in-out 0.1s;
+    -o-transition: all 0.3s ease-in-out 0.1s;
+    -ms-transition: all 0.3s ease-in-out 0.1s;
+    transition: all 0.3s ease-in-out 0.1s;
+ }
+ .hover_effect_3 .caption_desc {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transform: scale(10);
+    -moz-transform: scale(10);
+    -o-transform: scale(10);
+    -ms-transform: scale(10);
+    transform: scale(10);
+    -webkit-transition: all 0.3s ease-in-out 0.2s;
+    -moz-transition: all 0.3s ease-in-out 0.2s;
+    -o-transition: all 0.3s ease-in-out 0.2s;
+    -ms-transition: all 0.3s ease-in-out 0.2s;
+    transition: all 0.3s ease-in-out 0.2s;
+    padding: 20px 20px 30px;
+ }
+ .hover_effect_3 .caption_link {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transform: translateY(100px);
+    -moz-transform: translateY(100px);
+    -o-transform: translateY(100px);
+    -ms-transform: translateY(100px);
+    transform: translateY(100px);
+    -webkit-transition: all 0.3s ease-in-out 0.1s;
+    -moz-transition: all 0.3s ease-in-out 0.1s;
+    -o-transition: all 0.3s ease-in-out 0.1s;
+    -ms-transition: all 0.3s ease-in-out 0.1s;
+    transition: all 0.3s ease-in-out 0.1s;
+ }
+ .hover_effect_3:hover .caption {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    -ms-transition-delay: 0s;
+    transition-delay: 0s;
+ }
+ .hover_effect_3:hover .content_bg {
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    -ms-transition-delay: 0s;
+    transition-delay: 0s;
+ }
+ .hover_effect_3:hover .caption_title {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition-delay: 0.1s;
+    -moz-transition-delay: 0.1s;
+    -o-transition-delay: 0.1s;
+    -ms-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+    margin-top: 200px;
+ }
+ .hover_effect_3:hover .caption_desc {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition-delay: 0.2s;
+    -moz-transition-delay: 0.2s;
+    -o-transition-delay: 0.2s;
+    -ms-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+ }
+ .hover_effect_3:hover .caption_link {
+    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition-delay: 0.3s;
+    -moz-transition-delay: 0.3s;
+    -o-transition-delay: 0.3s;
+    -ms-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+ }
+
+.content_img {
+    width: 1140px;
+    height: 735px;
+}
+// 背景
+/* Config */
+$color-bg: #1e1e1e;
+$color-particle: #fff;
+$spacing: 2560px;
+$time-1: 60s;
+$time-2: 120s;
+$time-3: 180s;
+$time-4: 200s;
+
+/* mixins */
+@function particles($max) {
+  $val: 0px 0px $color-particle;
+  @for $i from 1 through $max {
+    $val: #{$val}, random($spacing)+px random($spacing)+px $color-particle;
+  }
+  @return $val;
+}
+
+@mixin particles($max) {
+  box-shadow: particles($max);
+  border-radius: 50%;
+}
+
+/* Styles */
+html, body {
+  height: 100%;
+}
+
+
+.page-bg, .animation-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  // width: 100%;
+  height: 100%;
+}
+
+.page-bg {
+  background: $color-bg;
+  background-blend-mode: screen;
+  background-size: cover;
+  filter: grayscale(100%);
+  z-index: -1;
+}
+
+.particle, .particle:after {
+  background: transparent;
+}
+
+.particle:after {
+  position: absolute;
+  content: "";
+  top: $spacing;
+}
+
+.particle-1 {
+  animation: animParticle $time-1 linear infinite;
+  @include particles(1000);
+  height: 2px;
+  width: 2px;
+}
+
+.particle-1:after {
+  @include particles(900);
+  height: 2px;
+  width: 2px;
+}
+
+.particle-2 {
+  animation: animParticle $time-2 linear infinite;
+  @include particles(800);
+  height: 2px;
+  width: 2px;
+}
+
+.particle-2:after {
+  @include particles(500);
+  height: 3px;
+  width: 3px;
+}
+
+.particle-3:after {
+  @include particles(1100);
+  height: 3px;
+  width: 3px;
+  border-radius: 50%;
+}
+
+.particle-4 {
+  animation: animParticle $time-4 linear infinite;
+  @include particles(1200);
+  height: 1px;
+  width: 1px;
+}
+
+.particle-4:after {
+  @include particles(700);
+  height: 1px;
+  width: 1px;
+}
+
+@keyframes animParticle {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY($spacing * -1);
+  }
+}
+
+.page-wrapper {
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+}
+
+h2 {
+  color: #fff;
+  font-family: Monoton;
+  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+  animation: neon1 1.5s ease-in-out infinite alternate;
+}
+
+h2:hover {
+  color: #FF1177;
+  -webkit-animation: none;
+  -moz-animation: none;
+  animation: none;
+}
+
+/*glow for webkit*/
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px #fff,
+      0 0 40px #FF1177,
+      0 0 70px #FF1177,
+      0 0 80px #FF1177,
+      0 0 100px #FF1177,
+      0 0 150px #FF1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #fff,
+      0 0 20px #FF1177,
+      0 0 35px #FF1177,
+      0 0 40px #FF1177,
+      0 0 50px #FF1177,
+      0 0 75px #FF1177;
+  }
+}
+
+/*glow for mozilla*/
+
+@-moz-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px #fff,
+      0 0 40px #FF1177,
+      0 0 70px #FF1177,
+      0 0 80px #FF1177,
+      0 0 100px #FF1177,
+      0 0 150px #FF1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #fff,
+      0 0 20px #FF1177,
+      0 0 35px #FF1177,
+      0 0 40px #FF1177,
+      0 0 50px #FF1177,
+      0 0 75px #FF1177;
+  }
+}
+
+/*glow*/
+
+@keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px #fff,
+      0 0 40px #FF1177,
+      0 0 70px #FF1177,
+      0 0 80px #FF1177,
+      0 0 100px #FF1177,
+      0 0 150px #FF1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #fff,
+      0 0 20px #FF1177,
+      0 0 35px #FF1177,
+      0 0 40px #FF1177,
+      0 0 50px #FF1177,
+      0 0 75px #FF1177;
+  }
+}
+
+// 動くロゴ
+.music {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 300px;
+  height: 200px;
+}
+
+.music .bar {
+  width: 12px;
+  height: 2px;
+  border-radius: 10px;
+  background-color: white;
+  animation: up_down 1.5s ease-in-out infinite;
+}
+
+@keyframes up_down {
+  0%,
+  100% {
+    height: 2px;
+  }
+  50% {
+    height: 80px;
+  }
+}
+
+.music .bar:nth-child(1) {
+  background-color: purple;
+  animation-delay: 1s;
+}
+
+.music .bar:nth-child(2) {
+  background-color: crimson;
+  animation-delay: 0.8s;
+}
+
+.music .bar:nth-child(3) {
+  background-color: deeppink;
+  animation-delay: 0.6s;
+}
+
+.music .bar:nth-child(4) {
+  background-color: orange;
+  animation-delay: 0.4s;
+}
+
+.music .bar:nth-child(5) {
+  background-color: gold;
+  animation-delay: 0.2s;
+}
+
+.music .bar:nth-child(6) {
+  background-color: gold;
+  animation-delay: 0.2s;
+}
+
+.music .bar:nth-child(7) {
+  background-color: orange;
+  animation-delay: 0.4s;
+}
+
+.music .bar:nth-child(8) {
+  background-color: deeppink;
+  animation-delay: 0.6s;
+}
+
+.music .bar:nth-child(9) {
+  background-color: crimson;
+  animation-delay: 0.8s;
+}
+
+.music .bar:nth-child(10) {
+  background-color: purple;
+  animation-delay: 1s;
+}
+// footer固定
+main {
+  min-height: calc(100vh - 163px - 186px);
+}
