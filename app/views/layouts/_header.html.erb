@@ -1,118 +1,102 @@
 <header>
+  <!--横幅900px以下用ハンバーガーメニュー一覧-->
   <nav class="navbar navbar-expand-lg navbar-dark nav-color-white browser-sp">
     <% if admin_signed_in? %><!--管理者ログイン時ー-->
-  <a class="navbar-brand mx-5 img-thumbnail" href="/admin/homes/top"><%= image_tag "logo2.PNG", :size => "135x135" %></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <%= link_to admin_users_path, class:"nav-link" do %>
-          <i class="fa-solid fa-address-card">Users</i>
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to admin_review_shoes_reviews_path, class:"nav-link" do %>
-          <i class="fa-solid fa-book-open">Shoes Reviews</i>
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to admin_review_comments_path, class:"nav-link" do %>
-          <i class="fa-solid fa-comment-slash">Comments</i>
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to destroy_admin_session_path, method: :delete , class:"nav-link" do %>
-          <i class="fa-solid fa-power-off">Logout</i>
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <% elsif user_signed_in? %><!--ログインした時ー-->
-  <a class="navbar-brand mx-5 img-thumbnail" href="/public/homes/top"><%= image_tag "logo2.PNG", :size => "135x135" %></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <%= link_to public_user_path(current_user), class:"nav-link" do %>
+      <a class="navbar-brand mx-5 img-thumbnail" href="/admin/homes/top"><%= image_tag "logo2.PNG", :size => "135x135" %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <%= link_to admin_users_path, class:"nav-link" do %>
+              <i class="fa-solid fa-address-card">Users</i>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to admin_review_shoes_reviews_path, class:"nav-link" do %>
+              <i class="fa-solid fa-book-open">Shoes Reviews</i>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to admin_review_comments_path, class:"nav-link" do %>
+              <i class="fa-solid fa-comment-slash">Comments</i>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_admin_session_path, method: :delete , class:"nav-link" do %>
+              <i class="fa-solid fa-power-off">Logout</i>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    <% elsif user_signed_in? %><!--ログインした時ー-->
+      <a class="navbar-brand mx-5 img-thumbnail" href="/public/homes/top"><%= image_tag "logo2.PNG", :size => "135x135" %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <%= link_to public_user_path(current_user), class:"nav-link" do %>
               <%= image_tag 'mypage.PNG', :size => "135x135" %>
             <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to public_homes_about_path, class:"nav-link" do %>
+          </li>
+          <li class="nav-item">
+            <%= link_to public_homes_about_path, class:"nav-link" do %>
               <%= image_tag 'about.PNG', :size => "135x135" %>
             <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to  public_shoes_reviews_path, class:"nav-link" do %>
+          </li>
+          <li class="nav-item">
+            <%= link_to  public_shoes_reviews_path, class:"nav-link" do %>
               <%= image_tag 'shoesreview.PNG', :size => "135x135" %>
             <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
               <%= image_tag 'logout.PNG', :size => "135x135" %>
             <% end %>
-      </li>
-    </ul>
-  </div>
-  <% else %><!--ログインしてないー-->
-  <a class="navbar-brand mx-5 img-thumbnail" href="/public/homes/top"><%= image_tag "logo2.PNG", :size => "135x135" %></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-    
-    
-        <%= link_to public_homes_about_path , class:"nav-link" do %>
+          </li>
+        </ul>
+      </div>
+    <% else %><!--ログインしてないー-->
+      <a class="navbar-brand mx-5 img-thumbnail" href="/public/homes/top"><%= image_tag "logo2.PNG", :size => "135x135" %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <%= link_to public_homes_about_path , class:"nav-link" do %>
               <%= image_tag 'about.PNG', :size => "135x135" %>
             <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to  new_user_session_path , class:"nav-link" do %>
+          </li>
+          <li class="nav-item">
+            <%= link_to  new_user_session_path , class:"nav-link" do %>
               <%= image_tag 'shoesreview.PNG', :size => "135x135" %>
             <% end %>
-      </li>
-      
-      <li class="nav-item">
-        <%= link_to new_user_registration_path, data: {"turbolinks" => false} , class:"nav-link" do %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_user_registration_path, data: {"turbolinks" => false} , class:"nav-link" do %>
               <%= image_tag 'signup2.PNG', :size => "135x135" %>
             <% end %>
-      </li>
-      
-      
-      <li class="nav-item">
-        <%= link_to  new_user_session_path , class:"nav-link" do %>
+          </li>
+          <li class="nav-item">
+            <%= link_to  new_user_session_path , class:"nav-link" do %>
               <%= image_tag 'login.PNG', :size => "135x135", class:"nav-link" %>
             <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to  users_guest_sign_in_path, method: :post , class:"nav-link" do %>
+          </li>
+          <li class="nav-item">
+            <%= link_to  users_guest_sign_in_path, method: :post , class:"nav-link" do %>
               <%= image_tag 'guest_login2.PNG', :size => "135x135" %>
             <% end %>
-      </li>
-    </ul>
-  </div>
-  
-  
-  
-  
-  
-  
-  <% end %>
-</nav>
-
-
-
-
-
-
-
-  <nav class="navbar navbar-expand-lg navbar-light browser-pc" style=" ">
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </nav>
+  <!--基本メニュー一覧-->
+  <nav class="navbar navbar-expand-lg navbar-light browser-pc">
     <% if admin_signed_in? %><!--管理者ログイン時ー-->
       <a class="navbar-brand mx-5 img-thumbnail" href="/admin/homes/top"><%= image_tag "logo2.PNG", :size => "135x135" %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
