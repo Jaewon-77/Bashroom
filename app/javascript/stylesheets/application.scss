@@ -611,7 +611,10 @@
     width: 100% !important;
     height: 260px !important;
 }
-
+// ハンバーガーメニュ字の色
+nav.nav-color-white .navbar-nav .nav-item .nav-link {
+  color: white;
+}
 
 // // 背景
 /* Config */
@@ -900,4 +903,16 @@ h2:hover {
 // footer固定
 main {
   min-height: calc(100vh - 163px - 186px);
+}
+
+// レスポンシブ対応メニュー
+@media screen and (max-width:990px) {
+  .browser-pc {
+    display: none;
+  }
+}
+@media screen and (min-width:990px) {
+  .browser-sp {
+    display: none;
+  }
 }
