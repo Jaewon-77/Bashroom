@@ -595,9 +595,23 @@
     height: 735px !important;
     object-fit: cover;
 }
+
 // @media screen and (min-width:600px) {
 //   object-position: -550px 0px;
 // }
+
+//TOP新着レビューレスポンシブ
+.card-img {
+    max-width: 200px !important;
+    width: 100% !important;
+    height: 200px !important;
+}
+.about-img {
+    max-width: 660px !important;
+    width: 100% !important;
+    height: 260px !important;
+}
+
 
 // // 背景
 /* Config */

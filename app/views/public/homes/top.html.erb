@@ -24,9 +24,9 @@
               <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
                 <div class="card-front">
                   <% if shoes_review.image.attached? %>
-                    <%= image_tag shoes_review.image, size: "200x200" %>
+                    <%= image_tag shoes_review.image, class:"card-img" %>
                   <% else %>
-                    <%= image_tag 'no_image.jpg', size: "200x200" %>
+                    <%= image_tag 'no_image.jpg', class:"card-img" %>
                   <% end %>
                 </div>
                 <div class="card-back">
