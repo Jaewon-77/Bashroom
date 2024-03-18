@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-1">
-      <%= image_tag "shoesreview.PNG", :size => "143x143" %>
+      <%#= image_tag "shoesreview.PNG", :size => "143x143" %>
     </div>
     <div class="col-11 row">
       <!--検索機能-->
@@ -22,6 +22,7 @@
         <% end %>
       </div>
     </div>
+    <!-- バスケットボールシューズレビュー -->
     <div class="container">
       <div class="row" style="padding: 15px; margin-top: 30px; margin-bottom: 30px; border: 5px double #FF1A6F;">
         <% @shoes_reviews.each do |shoes_review| %>
@@ -29,9 +30,9 @@
             <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
               <div class="card-front">
                 <% if shoes_review.image.attached? %>
-                  <%= image_tag shoes_review.image, size: "200x200" %>
+                  <%= image_tag shoes_review.image, class:"card-img" %>
                 <% else %>
-                  <%= image_tag 'no_image.jpg', size: "200x200" %>
+                  <%= image_tag 'no_image.jpg', class:"card-img" %>
                 <% end %>
                 <br>投稿番号：<%= shoes_review.id %>
                 <br>投稿日：<%= shoes_review.created_at.strftime('%Y/%m/%d') %>
