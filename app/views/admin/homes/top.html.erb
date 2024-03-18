@@ -10,9 +10,9 @@
           <div class="mt-2">
             <%= link_to admin_review_shoes_reviews_path do %>
               <% if shoes_review.image.attached? %>
-                <%= image_tag shoes_review.image, size: "100x100" %>
+                <%= image_tag shoes_review.image, class:"card-img" %>
               <% else %>
-                <%= image_tag 'no_image.jpg', size: "100x100" %>
+                <%= image_tag 'no_image.jpg', class:"card-img" %>
               <% end %>
             <% end %>
           </div>
@@ -35,9 +35,9 @@
           <div class="mt-2">
             <%= link_to admin_user_path(user) do %>
               <% if user.image.attached? %>
-            <%= image_tag user.image, size: "100x100" %>
+            <%= image_tag user.image, class:"card-img" %>
               <% else %>
-            <%= image_tag 'no_image.jpg', size: "100x100" %>
+            <%= image_tag 'no_image.jpg', class:"card-img" %>
               <% end %>
             <% end %>
           </div>

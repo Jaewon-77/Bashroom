@@ -916,3 +916,68 @@ main {
     display: none;
   }
 }
+
+/* table03 */
+
+.table03 th, .table05 td {
+  text-align: center;
+  width: 20%;
+  min-width: 130px;
+  padding: 10px;
+  height: 60px;
+}
+
+/* tab */
+@media only screen and (max-width: 768px) {
+  .table03 {
+    display: block;
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+  .table03 .fixed {
+    position: sticky;
+    left: 0;
+  }
+  .table05 .fixed:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -1px;
+    right: -1px;
+    height: 100%;
+    border-left: 1px solid #707070;
+    border-right: 1px solid #707070;
+  }
+}
+
+/* table01 */
+.table01 tr {
+  border-bottom: 1px solid #b5b1b1;
+}
+
+.table01 th,
+.table01 td {
+  padding: 24px 0;
+  border: none;
+}
+
+.table01 th {
+  width: 30%;
+}
+
+/* sp */
+@media only screen and (max-width: 480px) {
+  .table01 th,
+  .table01 td {
+    width: 100%;
+    display: block;
+  }
+
+  .table01 th {
+    width: 100%;
+  }
+
+  .table01 td {
+    padding-top: 0;
+  }
+}

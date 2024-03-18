@@ -3,8 +3,7 @@
     <div class="col mt-4">
       <h2 class="text-center mb-4" style="font-weight:bold; color:#FF1A6F; font-family: Rounded M+ 1c;"><%= @user.nickname %>さんが作成したバスケットボールシューズレビュー一覧</h2>
       <div style="padding: 15px; margin-bottom: 30px; border: 5px double #FF1A6F; font-family: 'Sacramento', cursive;">
-        <!--レスポンシブ900px以上表示するテーブルタグ-->
-        <table class="table table-dark table-striped　table-bordered table-hover text-white browser-pc" style="background-color: black">
+        <table class="table table-dark table-striped　table-bordered table-hover text-white table03" style="background-color: black">
           <thead>
             <th>User Nickname</th>
             <th>User Profile Photo</th>
@@ -59,67 +58,6 @@
               </tr>
             <% end %>
           </tbody>
-        </table>
-        <!--レスポンシブ900px以下表示するテーブルタグ-->
-        <table class="table table-dark table-striped　table-bordered table-hover text-white browser-sp" style="background-color: black">
-          <% @shoes_reviews.each do |shoes_review| %>
-            <tr>
-              <th>User Nickname</th>
-              <td>
-                <%= link_to public_user_path(shoes_review.user.id) do%>
-                  <%= shoes_review.user.nickname %>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <th>User Profile Photo</th>
-              <td>
-                <% if @user.image.attached? %>
-                  <%= image_tag @user.image, class: "rounded-circle", size: "50x50" %>
-                <% else %>
-                  <%= image_tag 'no_image.jpg', class: "rounded-circle", size: "50x50" %>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <th>Basketball Shoes Photo</th>
-              <td>
-                <% if shoes_review.image.attached? %>
-                  <%= image_tag shoes_review.image, size: "50x50" %>
-                <% else %>
-                  <%= image_tag 'no_image.jpg', size: "50x50" %>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <th>Title</th>
-              <td>
-                <%= link_to public_shoes_review_path(shoes_review.id) do %>
-                  <%= shoes_review.title  %>
-                <% end %>
-              </td>
-            </tr>  
-            <tr>
-              <th>Favorite</th>
-              <td>
-                <% if shoes_review.favorited_by?(current_user) %>
-                  <p>
-                    <%= link_to public_shoes_review_favorite_path(shoes_review), method: :delete do %>
-                      ♥
-                      <%= shoes_review.favorites.count %>
-                    <% end %>
-                  </p>
-                <% else %>
-                  <p>
-                    <%= link_to public_shoes_review_favorite_path(shoes_review), method: :post do %>
-                      ♡
-                      <%= shoes_review.favorites.count %>
-                    <% end %>
-                  </p>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
         </table>
       </div>
     </div>
