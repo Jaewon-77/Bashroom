@@ -43,7 +43,7 @@
                   </div>
                   <% if user_signed_in? %><!--ログインした時ー-->
                     <%= link_to "詳細", public_shoes_review_path(shoes_review), class:"card-link"  %>
-                  <% else %><!--ログインしてないー-->
+                  <% else %> <!--ログインしてないー-->
                     <%= link_to "詳細", new_user_session_path, class:"card-link"  %>
                   <% end %>
                 </div>
