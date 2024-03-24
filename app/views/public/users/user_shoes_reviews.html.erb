@@ -39,21 +39,9 @@
                   <% end %>
                 </td>
                 <td>
-                  <% if shoes_review.favorited_by?(current_user) %>
-                    <p>
-                     <%= link_to public_shoes_review_favorite_path(shoes_review), method: :delete do %>
-                       ♥
-                       <%= shoes_review.favorites.count %>
-                     <% end %>
-                    </p>
-                  <% else %>
-                    <p>
-                      <%= link_to public_shoes_review_favorite_path(shoes_review), method: :post do %>
-                        ♡
-                        <%= shoes_review.favorites.count %>
-                      <% end %>
-                    </p>
-                  <% end %>
+                  <div id="favorite_buttons_<%= shoes_review.id %>">
+                    <%= render "public/favorites/favorite", shoes_review: shoes_review %>
+                  </div>
                 </td>
               </tr>
             <% end %>
