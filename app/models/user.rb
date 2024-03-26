@@ -19,6 +19,8 @@ has_many :followers, through: :reverse_of_relationships, source: :follower
 
 has_one_attached :image
 
+validates :nickname, presence: true
+
 # フォローしたときの処理
 def follow(user_id)
   relationships.create(followed_id: user_id)

@@ -1,6 +1,6 @@
 class Public::ShoesReviewsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
      @shoes_review = ShoesReview.new
   end
@@ -25,8 +25,7 @@ class Public::ShoesReviewsController < ApplicationController
   end
 
   def index
-     @shoes_reviews = ShoesReview.page(params[:page])
-     #@shoes_reviews = ShoesReview.all
+     @shoes_reviews = ShoesReview.order(id: "DESC").page(params[:page])
      @user = User.find(current_user.id)
      @tag_list = Tag.all
 
