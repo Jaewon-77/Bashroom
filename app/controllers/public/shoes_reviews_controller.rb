@@ -1,5 +1,6 @@
 class Public::ShoesReviewsController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def new
      @shoes_review = ShoesReview.new
@@ -79,6 +80,13 @@ class Public::ShoesReviewsController < ApplicationController
 
   def shoes_review_params
     params.require(:shoes_review).permit(:title, :review, :traction, :cushion, :fit, :support, :weight, :image)
+  end
+
+  def is_matching_login_user
+    shoes_review = ShoesReview.find(params[:id])
+    unless shoes_review.user.id == current_user.id
+      redirect_to public_shoes_reviews_path
+    end
   end
 
 
