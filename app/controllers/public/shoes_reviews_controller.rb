@@ -8,8 +8,6 @@ class Public::ShoesReviewsController < ApplicationController
 
   def create
      @shoes_review = ShoesReview.new(shoes_review_params)
-     #@shoes_review.end_user_id = current_user.id
-     #@shoes_review.id = current_user.id
      @shoes_review.user_id = current_user.id
      tag_list = params[:shoes_review][:name].split(',')#追加
      if @shoes_review.save

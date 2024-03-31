@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  # before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :reject_guest, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -47,12 +47,11 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :nickname, :address, :favorite_brand, :email, :favorite_shoes_name, :size, :age, :image )
   end
 
-  # def is_matching_login_user
-  #   user = User.find(params[:id])
-  #   unless user.id == current_user.id
-  #     redirect_to public_user_path
-  #   end
-  # end
+  def reject_guest
+    if current_user.is_guest?
+      redirect_to public_user_path(current_user)
+    end
+  end
 
 
 

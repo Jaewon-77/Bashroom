@@ -48,9 +48,10 @@ GUEST_USER_EMAIL = "guest@example.com"
       user.nickname = "guestuser"
     end
   end
-
-
-
+  
+  def is_guest?
+    GUEST_USER_EMAIL == email
+  end
 
 # 検索方法分岐
   def self.looks(search, word)
